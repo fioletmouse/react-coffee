@@ -1,22 +1,16 @@
 import React from 'react';
-import './App.css';
+// import Cloud from '../cloud/Cloud';
+import Search from '../search/Search';
+import Header from '../header/Header';
+import CoffeeList from '../list/List'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React <button className='btn btn-primary'></button>
-        </a>
-      </header>
+    <div>
+      <Header/>
+      <Search /> 
+      <CoffeeList />
+      {/*<Cloud /> */}
     </div>
   );
 }
