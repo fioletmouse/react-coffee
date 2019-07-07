@@ -1,16 +1,12 @@
 import React from 'react';
-import Cloud from '../cloud/Cloud';
-import Search from '../search/Search';
+import MainPage from '../main-page/MainPage';
 import Header from '../header/Header';
-import CoffeeList from '../list/List'
 
 function App() {
   return (
     <div>
       <Header/>
-      <Search /> 
-      <CoffeeList />
-      <Cloud />
+      <MainPage /> 
     </div>
   );
 }
