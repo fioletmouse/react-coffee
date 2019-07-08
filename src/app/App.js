@@ -1,12 +1,19 @@
 import React from 'react';
-import MainPage from '../main-page/MainPage';
 import Header from '../header/Header';
+import CoffeeList from '../coffee-list/CoffeeList';
+import Coffee from '../coffee-article/Coffee';
+import Settings from '../global-settings/Settings'; 
+import { HashRouter, Route } from 'react-router-dom'
 
 function App() {
   return (
     <div>
       <Header/>
-      <MainPage /> 
+      <HashRouter>
+        <Route exact path='/' component={CoffeeList}/>
+        <Route path='/:name' component={Coffee}/>
+      </HashRouter>     
+      <Settings /> 
     </div>
   );
 }

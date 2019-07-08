@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CoffeeList (props) {
+function SimpleList (props) {
    return (
      <ul>
        {props.coffeeList.map( item => <li key={item.code}><a href={item.code}>{item.name}</a></li>)}
@@ -8,4 +8,4 @@ function CoffeeList (props) {
    )
 }
 
-export default CoffeeList;
+export default SimpleList;
