@@ -4,13 +4,16 @@ import Search from './search/Search';
 import SimpleList from './simple-list/SimpleList'
 import data from '../data';
 
-//const listType = 'cloud';
+const listType = 'list'; // TODO change to use context
 function CoffeeList() {
   return (
     <div>
       <Search /> 
-      <SimpleList list={data} />
-      <Cloud list={data}/>
+      {{
+          'cloud': <Cloud list={data}/>,
+          'list': <SimpleList list={data} />
+        }[listType]
+      }
     </div>
   );
 }

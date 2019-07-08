@@ -21,3 +21,7 @@
 .tagCloud {
 	flex: 1;
 }
+
+.tagCloud > a {
+	transition: 1.4s;
+}
