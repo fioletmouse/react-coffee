@@ -1,21 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Cloud from './cloud/Cloud';
 import Search from './search/Search';
 import SimpleList from './simple-list/SimpleList'
-import data from '../data';
+import CoffeeActions from '../services/data-handler';
 
 const listType = 'list'; // TODO change to use context
-function CoffeeList() {
-  return (
-    <div>
-      <Search /> 
-      {{
-          'cloud': <Cloud list={data}/>,
-          'list': <SimpleList list={data} />
-        }[listType]
-      }
-    </div>
-  );
+
+class CoffeeList extends Component {
+  state = {
+    coffees: CoffeeActions.getAll()
+  }
+
+  searchData = (event) => {
+    const data = CoffeeActions.findByName(event.target.value);
+    this.setState({
+      coffees: data
+    })
+  };
+
+  render() {
+    return (
+      <div>
+        <Search onSearch={this.searchData}  /> 
+        {{
+            'cloud': <Cloud list={this.state.coffees}/>,
+            'list': <SimpleList list={this.state.coffees} />
+          }[listType]
+        }
+      </div>
+    );
+  }  
 }
 
 export default CoffeeList;
