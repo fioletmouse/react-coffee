@@ -18,10 +18,16 @@ class CoffeeList extends Component {
     })
   };
 
+  refresh = () => {
+    this.setState({
+      coffees:  CoffeeActions.getAll()
+    });
+  }
+
   render() {
     return (
       <div>
-        <Search onSearch={this.searchData}  /> 
+        <Search onSearch={this.searchData} onRefresh={this.refresh} /> 
         {{
             'cloud': <Cloud list={this.state.coffees}/>,
             'list': <SimpleList list={this.state.coffees} />

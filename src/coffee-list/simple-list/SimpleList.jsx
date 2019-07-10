@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './SimpleList.module.css';
 import { Link } from 'react-router-dom'
-
+import PropTypes from 'prop-types';
 
 function SimpleList (props) {
    return (
@@ -11,6 +11,13 @@ function SimpleList (props) {
        )}
      </ul>
    )
+}
+
+SimpleList.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }))
 }
 
 export default SimpleList;

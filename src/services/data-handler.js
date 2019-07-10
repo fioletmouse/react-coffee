@@ -1,13 +1,30 @@
 import data from '../data';
 
 function CoffeeActions () {
+  let cachedList = null;
+
   const getAll = () => {
-    console.log('test');
+    if(cachedList) {
+      return cachedList;
+    }
+
+    cachedList = data;
     return data;
   }
 
+  // TODO improve to part search
   const findByName = (name) => {
-    return [data[0]];
+    const allData = getAll();
+    if(!name) {
+      return allData;
+    }
+    const lowerName = name.toLowerCase();
+    const item = allData.find( item => item.name.toLowerCase() === lowerName);
+
+    if(item) {
+      return [item];
+    }
+    return [];
   }
 
   return {

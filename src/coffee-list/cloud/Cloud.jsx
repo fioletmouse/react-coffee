@@ -3,6 +3,7 @@ import TagCloud from 'react-tag-cloud';
 import styles from './Cloud.module.css';
 import { Link } from 'react-router-dom';
 import randomColor from 'randomcolor';
+import PropTypes from 'prop-types';
 
 class Cloud extends Component {
   componentDidMount() {
@@ -29,5 +30,10 @@ class Cloud extends Component {
     );
   }
 }
-
+Cloud.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.shape({
+    code: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }))
+}
 export default Cloud;
