@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../header/Header';
 import CoffeeList from '../coffee-list/CoffeeList';
 import Coffee from '../coffee-article/Coffee';
-import Settings from '../global-settings/Settings'; 
+import SettingModal from '../global-settings/SettingModal'; 
 import { HashRouter, Route } from 'react-router-dom'
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Route exact path='/' component={CoffeeList}/>
         <Route path='/:name' component={Coffee}/>
       </HashRouter>     
-      <Settings /> 
+      <SettingModal /> 
     </div>
   );
 }
