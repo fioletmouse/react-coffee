@@ -27,9 +27,27 @@ function CoffeeActions () {
     return [];
   }
 
+  const emptyArticleObject = {
+    code: '',
+    name: '',
+    image: '',
+    info:''
+  }
+
+  const findByCode = (code) => {
+    const allData = getAll();
+    if(!code) {
+      return emptyArticleObject;
+    }
+    const item = allData.find( item => item.code === code);
+
+    return item;
+  }
+
   return {
     getAll,
-    findByName
+    findByName,
+    findByCode
   }
 }
 

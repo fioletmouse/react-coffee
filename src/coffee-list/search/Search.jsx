@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Search.module.css'; 
 
 function Search (props) {
- return (
-   <div>
-     <input className="w-25 text-center" placeholder='Enter the name' onChange={props.onSearch}></input>
-     <button className="btn btn-primary" onClick={props.onRefresh}>Clean</button>
-   </div>
- )
+  const [inputState, changeInputState] = useState('');
+
+  const prepareSearchData = (event) => {
+    const _value = event.target.value;
+    props.onSearch(_value);
+    changeInputState(_value);
+  }
+  
+  const clearDataHandler = () => {
+    changeInputState('');
+    props.onRefresh();
+  }
+
+  return (
+    <div>
+      <input className="w-25 text-center" placeholder='Enter the name' value={inputState} onChange={prepareSearchData}></input>
+      <button className="btn btn-primary" id="clearData"  onClick={clearDataHandler}>Clean</button>
+    </div>
+  )
 }
 
 Search.propTypes  = {

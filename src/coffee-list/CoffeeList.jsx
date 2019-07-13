@@ -11,8 +11,8 @@ class CoffeeList extends Component {
     coffees: CoffeeActions.getAll()
   }
 
-  searchData = (event) => {
-    const data = CoffeeActions.findByName(event.target.value);
+  searchData = (_value) => {
+    const data = CoffeeActions.findByName(_value);
     this.setState({
       coffees: data
     })
