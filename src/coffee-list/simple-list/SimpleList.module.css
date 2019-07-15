@@ -1,0 +1,6 @@
+.listBody {
+  text-align: center
+}
+.listBody > li {
+  list-style-type: none; /* Убираем маркеры */
+ }
