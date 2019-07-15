@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Modal } from 'react-bootstrap';
+import ColorPicker from './ColorPicker'
+import ListType from './ListType'
 export default class SettingModal extends Component {
 
   constructor(props, context) {
@@ -24,23 +26,19 @@ export default class SettingModal extends Component {
   render() {
     return (
       <>
-        <Button variant="primary" onClick={this.handleShow}>
-          Launch demo modal
+        <Button variant="outline-info" onClick={this.handleShow} >
+          Settings
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            Site Settings
           </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.handleClose}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={this.handleClose}>
-              Save Changes
-            </Button>
-          </Modal.Footer>
+          <Modal.Body>
+            <ColorPicker />
+            <hr />
+            <ListType />
+          </Modal.Body>
         </Modal>
       </>
     );
