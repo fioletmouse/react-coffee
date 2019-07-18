@@ -3,7 +3,7 @@ import Cloud from './cloud/Cloud';
 import Search from './search/Search';
 import SimpleList from './simple-list/SimpleList'
 import CoffeeActions from '../services/data-handler';
-import AppContext from '../services/global-context/AppContext '
+import AppContext from '../services/global-context/AppContext'
 
 const listType = 'list'; // TODO change to use context
 

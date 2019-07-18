@@ -14,9 +14,9 @@ function App() {
         <HashRouter>
           <Route exact path='/' component={CoffeeList}/>
           <Route path='/:name' component={Coffee}/>
-        </HashRouter>     
-      </AppProvider> 
-      <SettingModal /> 
+        </HashRouter>  
+        <SettingModal />    
+      </AppProvider>       
     </div>
   );
 }
