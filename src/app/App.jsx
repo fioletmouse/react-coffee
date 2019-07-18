@@ -4,15 +4,18 @@ import CoffeeList from '../coffee-list/CoffeeList';
 import Coffee from '../coffee-article/Coffee';
 import SettingModal from '../global-settings/SettingModal'; 
 import { HashRouter, Route } from 'react-router-dom'
+import AppProvider from '../services/global-context/AppProvider'
 
 function App() {
   return (
     <div>
-      <Header/>
-      <HashRouter>
-        <Route exact path='/' component={CoffeeList}/>
-        <Route path='/:name' component={Coffee}/>
-      </HashRouter>     
+      <AppProvider> 
+        <Header/>
+        <HashRouter>
+          <Route exact path='/' component={CoffeeList}/>
+          <Route path='/:name' component={Coffee}/>
+        </HashRouter>     
+      </AppProvider> 
       <SettingModal /> 
     </div>
   );
