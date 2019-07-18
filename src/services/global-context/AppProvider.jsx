@@ -8,9 +8,17 @@ class AppProvider extends Component {
     });
   };
 
+  changeColor = (color) => {
+    this.setState({
+      selectedColor: color.hex
+    });
+  };
+
   state = {
     listType: 'list',
-    changeListType: this.changeListType
+    changeListType: this.changeListType,
+    selectedColor: '#795548',
+    changeColor: this.changeColor
   };
 
   render() {
