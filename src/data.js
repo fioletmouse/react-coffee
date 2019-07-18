@@ -15,7 +15,7 @@ export default[
   {
     code: 'doppio',
     name: 'Doppio',
-    image: 'Doppio.png',
+    image: 'doppio.png',
     info: 'On some menus, you may see the word “doppio”, which is just Italian for double. A doppio is simply a double espresso, \n\
     two regular espressos in one cup. A doppio should definitely not mean the barista just allows more water to pass into the cup \n\
     when pulling the espresso, this will only result in a more diluted drink (see “lungo” below) and not a true “doppio”. \n\
