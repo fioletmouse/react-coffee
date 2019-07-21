@@ -4,7 +4,7 @@ import Search from './search/Search';
 import SimpleList from './simple-list/SimpleList'
 import CoffeeActions from '../services/data-handler';
 
-const listType = 'list'; // TODO change to use context
+const listType = 'list'; // TODO change to use context \ redux to separate branches
 
 class CoffeeList extends Component {
   state = {
@@ -26,14 +26,14 @@ class CoffeeList extends Component {
 
   render() {
     return (
-      <div>
+      <>
         <Search onSearch={this.searchData} onRefresh={this.refresh} /> 
         {{
             'cloud': <Cloud list={this.state.coffees}/>,
             'list': <SimpleList list={this.state.coffees} />
           }[listType]
         }
-      </div>
+      </>
     );
   }  
 }
