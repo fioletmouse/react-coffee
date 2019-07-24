@@ -1,6 +1,3 @@
-.listBody {
-  text-align: center
-}
 .listBody > li {
-  list-style-type: none; /* Убираем маркеры */
+  list-style-type: square; /* Убираем маркеры */
  }

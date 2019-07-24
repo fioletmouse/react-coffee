@@ -8,7 +8,7 @@ import AppProvider from '../services/global-context/AppProvider'
 
 function App() {
   return (
-    <div>
+    <div className="col-12">
       <AppProvider> 
         <Header/>
         <HashRouter>

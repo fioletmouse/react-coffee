@@ -5,7 +5,7 @@ import SimpleList from './simple-list/SimpleList'
 import CoffeeActions from '../services/data-handler';
 import AppContext from '../services/global-context/AppContext'
 
-const listType = 'list'; // TODO change to use context
+const listType = 'list'; // TODO change to use context \ redux to separate branches
 
 class CoffeeList extends Component {
   state = {

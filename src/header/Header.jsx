@@ -1,13 +1,17 @@
 import React from 'react';
-import styles from './Header.module.css';
 
 function Header() {
   return (
-    <header>
-      <h2 className={styles.mainHeader}>
-        Test Application
-      </h2>        
-    </header>
+    <div className="row">
+      <div className="offset-3 col-6">
+        <header className="text-center">
+          <h2 className="header">
+            Test-e-e-e-e Coffee
+          </h2>        
+        </header>
+      </div>
+    </div>
+   
   );
 }
 
