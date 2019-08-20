@@ -11,6 +11,7 @@ function Search (props) {
   const prepareSearchData = (event) => {
     const _value = event.target.value;
     props.changeSearch(_value);
+    props.onSearch();
   }
 
   return (
