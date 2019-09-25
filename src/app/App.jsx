@@ -1,18 +1,22 @@
 import React from 'react';
-import Header from '../header/Header';
-import CoffeeList from '../coffee-list/CoffeeList';
-import Coffee from '../coffee-article/Coffee';
+import MainPage from '../start-page/MainPage';
 import { HashRouter, Route } from 'react-router-dom'
+import pages from './pagesList'
+
+import CoffeeList from '../coffee-list/CoffeeList';
+import Tools from '../tools/Tools';
+import Blends from '../blends/Blends';
+import Other from '../other/Other';
 
 function App() {
-  return (
-    <div className="col-12">
-      <Header/>
-      <HashRouter>
-        <Route exact path='/' component={CoffeeList}/>
-        <Route path='/:name' component={Coffee}/>
-      </HashRouter>     
-    </div>
+  return (  
+    <HashRouter>
+      <Route exact path='/' render={() => ( <MainPage pages={pages}/> )} />
+      <Route path='/tools' component={Tools}/>
+      <Route path='/blends' component={Blends}/>
+      <Route path='/recipes' component={CoffeeList}/>
+      <Route path='/other' component={Other}/>
+    </HashRouter>     
   );
 }
 

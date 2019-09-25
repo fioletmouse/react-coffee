@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import CoffeeActions from '../services/data-handler';
+import CoffeeActions from '../../services/data-handler';
 import CoffeeHeader from './CoffeeHeader'
 export default class Coffee extends Component {
 
