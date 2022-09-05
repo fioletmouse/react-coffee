@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import React, { useState } from 'react';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 function Search (props) {
   const [inputState, changeInputState] = useState('');
@@ -26,7 +26,7 @@ function Search (props) {
             <input class="form-control" id="search" placeholder="Enter the name" value={inputState} onChange={prepareSearchData} />
           </div>
           <button type="submit" class="btn btn btn-dark" onClick={clearDataHandler}>
-            <FontAwesomeIcon icon={faTrash} />             
+            {/* <FontAwesomeIcon icon={faTrash} />              */}
           </button>
         </div>       
       </div>

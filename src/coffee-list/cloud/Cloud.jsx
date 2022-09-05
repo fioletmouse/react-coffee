@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import TagCloud from 'react-tag-cloud';
-import styles from './Cloud.module.css';
-import { Link } from 'react-router-dom';
-import randomColor from 'randomcolor';
+// import TagCloud from 'react-tag-cloud';
 import PropTypes from 'prop-types';
+import styles from './Cloud.module.css';
 
 class Cloud extends Component {
   componentDidMount() {
@@ -16,13 +14,13 @@ class Cloud extends Component {
     return (
       <div className={styles.appOuter}>
         <div className={styles.appInner}>
-          <TagCloud  className={styles.tagCloud} style={{color: () => randomColor({ hue: 'orange'}) }}>
+          {/* <TagCloud  className={styles.tagCloud} style={{color: () => randomColor({ hue: 'orange'}) }}>
             {
               this.props.list.map(item => 
                 <Link to={`/${item.code}`}>{item.name}</Link>
               )
             }
-          </TagCloud>    
+          </TagCloud>     */}
         </div>
       </div>
       

@@ -12,7 +12,7 @@ module.exports = defineConfig({
 
   component: {
     devServer: {
-      framework: "react",
+      framework: "create-react-app",
       bundler: "webpack",
     },
   },
