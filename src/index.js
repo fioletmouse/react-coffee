@@ -6,6 +6,6 @@ import App from './app/App';
 
 ReactDOM.render(
     <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+        <App />
+    </BrowserRouter>,
 document.getElementById('root'));
