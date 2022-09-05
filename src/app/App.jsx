@@ -1,22 +1,22 @@
 import React from 'react';
+import { Route, Routes } from "react-router-dom";
 import MainPage from '../start-page/MainPage';
-import { HashRouter, Route } from 'react-router-dom'
-import pages from './pagesList'
+import pages from './pagesList';
 
-import CoffeeList from '../coffee-list/CoffeeList';
-import Tools from '../tools/Tools';
 import Blends from '../blends/Blends';
+import CoffeeList from '../coffee-list/CoffeeList';
 import Other from '../other/Other';
+import Tools from '../tools/Tools';
 
 function App() {
   return (  
-    <HashRouter>
-      <Route exact path='/' render={() => ( <MainPage pages={pages}/> )} />
-      <Route path='/tools' component={Tools}/>
-      <Route path='/blends' component={Blends}/>
-      <Route path='/recipes' component={CoffeeList}/>
-      <Route path='/other' component={Other}/>
-    </HashRouter>     
+    <Routes>
+        <Route exact path='/' element={ <MainPage pages={pages}/>} />
+        <Route path='/tools' element={<Tools />}/>
+        <Route path='/blends' element={<Blends/>}/>
+        <Route path='/recipes' element={<CoffeeList/>}/>
+        <Route path='/other' element={<Other/>}/>
+    </Routes>     
   );
 }
 
