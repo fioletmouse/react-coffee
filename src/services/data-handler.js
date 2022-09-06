@@ -1,4 +1,4 @@
-import data from '../data';
+import data from './data';
 
 function CoffeeActions() {
   let cachedList = null;
@@ -7,7 +7,6 @@ function CoffeeActions() {
     if (cachedList) {
       return cachedList;
     }
-
     cachedList = data;
     return data;
   };
@@ -19,6 +18,7 @@ function CoffeeActions() {
       return allData;
     }
     const lowerName = name.toLowerCase();
+    // eslint-disable-next-line no-shadow
     const item = allData.find((item) => item.name.toLowerCase() === lowerName);
 
     if (item) {
@@ -39,6 +39,7 @@ function CoffeeActions() {
     if (!code) {
       return emptyArticleObject;
     }
+    // eslint-disable-next-line no-shadow
     const item = allData.find((item) => item.code === code);
 
     return item;
