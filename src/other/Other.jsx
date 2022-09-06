@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../shared/header/Header';
 
 function Other() {
   return (
-    <> Not implemented yet </>
+    <>
+      <Header />
+      Not implemented yet
+    </>
   );
 }
 
