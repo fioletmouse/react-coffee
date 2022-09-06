@@ -10,7 +10,7 @@
         "plugin:testing-library/react",
         "airbnb"
     ],
-    "ignorePatterns":["cypress/", "cypress.config.js"],
+    "ignorePatterns":["cypress/", "cypress.config.js", "src/data.js"],
     "overrides": [
       {
         "files": ["src/**/*.js", "src/**/*.jsx"]
