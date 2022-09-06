@@ -1,40 +1,24 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import CoffeeActions from '../services/data-handler';
-import Cloud from './cloud/Cloud';
-import Search from './search/Search';
-import SimpleList from './simple-list/SimpleList';
+import Header from '../shared/header/Header';
+import List from './list/List';
 
-const listType = 'list'; // TODO change to use context \ redux to separate branches
+function CoffeeList() {
+  const [recipes, setRecipes] = useState([]);
+  const [loader, setLoader] = useState(true);
 
-class CoffeeList extends Component {
-  state = {
-    coffees: CoffeeActions.getAll(),
-  };
+  useEffect(() => {
+    const data = CoffeeActions.getAll();
+    setRecipes(data);
+    setLoader(false);
+  }, []);
 
-  searchData = (_value) => {
-    const data = CoffeeActions.findByName(_value);
-    this.setState({
-      coffees: data,
-    });
-  };
-
-  refresh = () => {
-    this.setState({
-      coffees: CoffeeActions.getAll(),
-    });
-  };
-
-  render() {
-    return (
-      <>
-        <Search onSearch={this.searchData} onRefresh={this.refresh} />
-        {{
-          cloud: <Cloud list={this.state.coffees} />,
-          list: <SimpleList list={this.state.coffees} />,
-        }[listType]}
-      </>
-    );
-  }
+  return (
+    <>
+      <Header />
+      { !loader && <List list={recipes} /> }
+    </>
+  );
 }
 
 export default CoffeeList;

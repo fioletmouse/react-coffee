@@ -1,9 +1,10 @@
+/* eslint-disable react/destructuring-assignment */
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './SimpleList.module.css';
+import styles from './List.module.css';
 
-function SimpleList(props) {
+function List(props) {
   return (
     <div className="row">
       <div className="offset-3 col-6">
@@ -16,11 +17,11 @@ function SimpleList(props) {
   );
 }
 
-SimpleList.propTypes = {
+List.propTypes = {
   list: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   })).isRequired,
 };
 
-export default SimpleList;
+export default List;

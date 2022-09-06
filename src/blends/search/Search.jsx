@@ -18,6 +18,7 @@ function Search(props) {
   };
 
   return (
+
     <div className="row">
       <div className="offset-3 col-6">
         <div className="form-group row">
@@ -39,7 +40,21 @@ function Search(props) {
     </div>
   );
 }
+/*
 
+  // searchData = (_value) => {
+  //   const data = CoffeeActions.findByName(_value);
+  //   this.setState({
+  //     coffees: data,
+  //   });
+  // };
+
+  // refresh = () => {
+  //   this.setState({
+  //     coffees: CoffeeActions.getAll(),
+  //   });
+  // };
+<Search onSearch={this.searchData} onRefresh={this.refresh} /> */
 Search.propTypes = {
   onSearch: PropTypes.func.isRequired,
   onRefresh: PropTypes.func.isRequired,
