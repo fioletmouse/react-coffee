@@ -1,15 +1,13 @@
 .block {
-color: whitesmoke;
-font-size: xx-large;
+    color: whitesmoke;
+    font-size: xx-large;
     font-family: fantasy;
-
-    
-border: 1px black solid;
-background-color: black;
-border-radius: 10px;
-min-width: 300px;
-min-height: 300px;
-display: flex;
-justify-content: center;
-align-items: center;
+    border: 1px black solid;
+    background-color: black;
+    border-radius: 10px;
+    min-width: 300px;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

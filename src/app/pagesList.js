@@ -1,6 +1,6 @@
 export default [
-  'tools',
-  'blends',
-  'recipes',
-  'other',
+  { name: 'tools', path: 'tools' },
+  { name: 'blends', path: 'blends' },
+  { name: 'recipes', path: 'recipes' },
+  { name: 'other', path: 'other' },
 ];
