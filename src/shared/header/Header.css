@@ -1,0 +1,21 @@
+.header {
+    font-size: 32px;
+    font-family: fantasy;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_btn {
+    color: whitesmoke;  
+}
+
+.selected {
+    text-decoration: underline;
+}
+
+.selected:hover {
+    color:whitesmoke;
+    cursor: default;
+}

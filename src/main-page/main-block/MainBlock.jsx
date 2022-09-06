@@ -6,7 +6,7 @@ import style from './MainBlock.module.css';
 function MainBlock({ page }) {
   return (
     <div className={style.block}>
-      <Link to={`${page.path}`} className={style.block}>{page.name}</Link>
+      <Link to={`/${page.path}`} className={style.block}>{page.name}</Link>
     </div>
   );
 }

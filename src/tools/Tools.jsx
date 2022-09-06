@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../shared/header/Header';
 
 function Tools() {
   return (
-    <> Not implemented yet </>
+    <>
+      <Header />
+      Not implemented yet
+    </>
   );
 }
 
