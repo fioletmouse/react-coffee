@@ -7,7 +7,7 @@ function MainBlock(props) {
     <div className={style.block}>
       <Link to={`${props.addr}`} className={style.block}>{props.addr}</Link>
     </div>
-  
+
   );
 }
 

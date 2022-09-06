@@ -1,16 +1,16 @@
-export default[
+export default [
   {
     code: 'espresso',
     name: 'Espresso',
     image: 'espresso.png',
-    info: "For some purists, espresso is the king of coffees and the only true way to drink the stuff. The espresso is where it all \n\
+    info: 'For some purists, espresso is the king of coffees and the only true way to drink the stuff. The espresso is where it all \n\
     starts: without espresso, none of the other drinks on this list would be possible. Espresso is made by forcing pressurized \n\
     hot water at a temperature of about 190-200°F (88-93°C) through a small amount of finely ground beans. The result is a thick, \n\
     rich and intense shot of coffee with a golden “crema” on top. Many people believe espresso has a higher caffeine content \n\
     than other coffees. This is true if you are measuring by volume – but there is a higher dose of caffeine in a regular cup\n\
      of drip coffee or coffee made with a French press since there is simply more of it. There are many factors to consider \n\
      when making espresso, including beans, grind, amount of coffee, time, temperature and pressure. Check out this video to see \n\
-     how they all combine to make the perfect shot."    
+     how they all combine to make the perfect shot.',
   },
   {
     code: 'doppio',
@@ -20,7 +20,7 @@ export default[
     two regular espressos in one cup. A doppio should definitely not mean the barista just allows more water to pass into the cup \n\
     when pulling the espresso, this will only result in a more diluted drink (see “lungo” below) and not a true “doppio”. \n\
     Sometimes you may see “doppio” with other espresso drinks – this means the drink you are ordering is a double-strength \n\
-    version with two espresso shots in it instead of just one.'    
+    version with two espresso shots in it instead of just one.',
   },
   {
     code: 'ristretto',
@@ -31,7 +31,7 @@ export default[
     the flow. As mentioned above, if the barista allows the water to keep flowing too long, the espresso will become too diluted. \n\
     On the other hand, if the barista stops sooner, the coffee will be even thicker and more intense than a standard espresso: \n\
     this is a ristretto, a stronger, more concentrated espresso. If you want the shortest, blackest, strongest shot of coffee \n\
-    available, ask for a ristretto – but don’t be surprised if you don’t find very much coffee in your cup.'    
+    available, ask for a ristretto – but don’t be surprised if you don’t find very much coffee in your cup.',
   },
   {
     code: 'americano',
@@ -43,7 +43,7 @@ export default[
     a long drink more suited to the G.I.s’ tastes. The Americano was born. The Americano is sometimes somewhat derided. \n\
     Why would you want to water down the delicious intensity of an espresso? But if you’re in the mood for something that \n\
     lasts a bit longer than a 1oz shot and you don’t want a milky concoction like a latte or cappuccino, an Americano could \n\
-    be the one to go for.'    
+    be the one to go for.',
   },
   {
     code: 'cappuccino',
@@ -55,7 +55,7 @@ export default[
      the steam wand on the espresso machine to heat a jug of milk, which separates into the froth and heated milk. This mixture \n\
      is poured onto the espresso shot, creating a milky coffee drink topped by a layer of froth. The ratio of espresso to milk \n\
      to froth should be about 1:1:1. Skilled baristas often decorate cappuccinos with elaborate patterns in the froth, now known \n\
-     as “latte art”.'    
+     as “latte art”.',
   },
   {
     code: 'latte',
@@ -68,7 +68,7 @@ export default[
     to the espresso, and the layer of foam on the top is much thinner than with a cappuccino. Lattes are often served in \n\
     tall glasses, although sometimes they may be presented in a cappuccino-style cup. Baristas often decorate lattes with latte \n\
     art, hence the name of this practice. Caffè latte in Italian literally means “milk coffee”. If you just ask for a latte \n\
-    in a bar in Italy, you will probably be served a glass of hot milk!'    
+    in a bar in Italy, you will probably be served a glass of hot milk!',
   },
   {
     code: 'flatWhite',
@@ -83,7 +83,7 @@ export default[
     into milk and froth; rather, the whole volume of milk should be in the form of microfoam. This means when the milk is \n\
     poured into the espresso, it combines completely with the coffee, leaving no layer of foam on top. Since flat whites are \n\
     usually made with a double shot of espresso and a lower volume of milk than lattes or cappuccinos, the resulting drink is \n\
-    less milky and with a stronger espresso flavor.'    
+    less milky and with a stronger espresso flavor.',
   },
   {
     code: 'mocha',
@@ -96,7 +96,7 @@ export default[
     in the form of hot chocolate powder or real melted chocolate. The chocolate used is usually milk chocolate, but white or \n\
     dark chocolate can be used instead. Be careful not to confuse mocha the espresso drink with mocha (a type of coffee bean), \n\
     Mocha (the place in Yemen where mocha beans come from) or moka (same pronunciation), the traditional pot that is especially \n\
-    popular for making coffee in Italy and Spain.'    
+    popular for making coffee in Italy and Spain.',
   },
   {
     code: 'macchiato',
@@ -108,7 +108,7 @@ export default[
     that giving a coffee drink an Italian-sounding name will make it sell better. You will now find all manner of beverages being \n\
     served under this moniker. Sometimes macchiatos are “marked” with a dollop of foam – which is not so far from the authentic \n\
     drink – and other times you will come across drinks sharing nothing with the original beyond the name. It’s not a macchiato \n\
-    just because you call it one…'    
+    just because you call it one…',
   },
   {
     code: 'corretto',
@@ -117,7 +117,7 @@ export default[
     info: 'This is not a drink you are likely to find in your local Starbucks, but if you are eating in a decent authentic \n\
     Italian restaurant, you may be able to try a traditional “corretto” at the end of your meal. Corretto in Italian means \n\
     “corrected”, and this refers to the fact that the espresso shot has been “corrected” with a shot of strong alcohol, most \n\
-    traditionally Italian grappa (although you are free to “correct” your coffee with the liquor of your choosing. Brandy is also popular.'    
+    traditionally Italian grappa (although you are free to “correct” your coffee with the liquor of your choosing. Brandy is also popular.',
   },
   {
     code: 'raf',
@@ -127,6 +127,6 @@ export default[
     and tender. Extra ingredients include syrups, milk, brandy, caramel, chocolate, etc. Raf coffee is usually served in cappuccino \n\
     or latte cups. Raf coffee is one of the ambivalent and disputable drinks. On the one hand, it does not support the philosophy \n\
     of coffee as a berry and is more like a dessert. On the other hand, it develops the idea of a coffee shop that is cosy, \n\
-    welcoming and ready to be individual.'    
-  }
-]
+    welcoming and ready to be individual.',
+  },
+];

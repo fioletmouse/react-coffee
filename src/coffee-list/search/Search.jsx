@@ -3,40 +3,46 @@ import React, { useState } from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-function Search (props) {
+function Search(props) {
   const [inputState, changeInputState] = useState('');
 
   const prepareSearchData = (event) => {
     const _value = event.target.value;
     props.onSearch(_value);
     changeInputState(_value);
-  }
-  
+  };
+
   const clearDataHandler = () => {
     changeInputState('');
     props.onRefresh();
-  }
+  };
 
   return (
     <div className="row">
-      <div className="offset-3 col-6">       
-        <div class="form-group row">          
-          <div class="col-sm-10">
-            <label for="search" class="sr-only">Search</label>
-            <input class="form-control" id="search" placeholder="Enter the name" value={inputState} onChange={prepareSearchData} />
+      <div className="offset-3 col-6">
+        <div className="form-group row">
+          <div className="col-sm-10">
+            <label htmlFor="search" className="sr-only">Search</label>
+            <input
+              className="form-control"
+              id="search"
+              placeholder="Enter the name"
+              value={inputState}
+              onChange={prepareSearchData}
+            />
           </div>
-          <button type="submit" class="btn btn btn-dark" onClick={clearDataHandler}>
+          <button type="submit" className="btn btn btn-dark" onClick={clearDataHandler}>
             {/* <FontAwesomeIcon icon={faTrash} />              */}
           </button>
-        </div>       
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-Search.propTypes  = {
+Search.propTypes = {
   onSearch: PropTypes.func.isRequired,
-  onRefresh: PropTypes.func.isRequired
-}
+  onRefresh: PropTypes.func.isRequired,
+};
 
 export default Search;
