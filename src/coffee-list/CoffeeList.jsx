@@ -8,15 +8,20 @@ function CoffeeList() {
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
-    const data = CoffeeActions.getAll();
-    setRecipes(data);
-    setLoader(false);
+    CoffeeActions.getRecipesList()
+      .then((data) => {
+        setRecipes(data);
+        setLoader(false);
+      }).catch(() => setLoader(false));
   }, []);
 
   return (
     <>
       <Header />
-      { !loader && <List list={recipes} /> }
+      {loader && <div> Loading...</div>}
+      {!loader && ((recipes && recipes.length > 0)
+        ? <List list={recipes} />
+        : <div>No data found</div>)}
     </>
   );
 }
