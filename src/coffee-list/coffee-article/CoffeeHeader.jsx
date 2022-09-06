@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-const CoffeeHeader = (props) => {
+function CoffeeHeader(props) {
   return (
     <div className="row">
       <div className="offset-3 col-6">
@@ -9,7 +9,7 @@ const CoffeeHeader = (props) => {
         </h3>
       </div>
     </div>
-  )
+  );
 }
 
-export default CoffeeHeader
+export default CoffeeHeader;

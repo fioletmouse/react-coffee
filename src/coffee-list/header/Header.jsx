@@ -7,11 +7,11 @@ function Header() {
         <header className="text-center">
           <h2 className="header">
             Test-e-e-e-e Coffee
-          </h2>        
+          </h2>
         </header>
       </div>
     </div>
-   
+
   );
 }
 

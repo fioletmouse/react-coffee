@@ -1,0 +1,31 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:jest/recommended",
+        "plugin:testing-library/react",
+        "airbnb"
+    ],
+    "ignorePatterns":["cypress/", "cypress.config.js"],
+    "overrides": [
+      {
+        "files": ["src/**/*.js", "src/**/*.jsx"]
+      }
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "linebreak-style":"off",
+        "comma-dangle": ["error", "always-multiline"],
+        "max-len": ["error", { "code": 110 }]
+    }
+}

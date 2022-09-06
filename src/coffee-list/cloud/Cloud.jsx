@@ -16,22 +16,22 @@ class Cloud extends Component {
         <div className={styles.appInner}>
           {/* <TagCloud  className={styles.tagCloud} style={{color: () => randomColor({ hue: 'orange'}) }}>
             {
-              this.props.list.map(item => 
+              this.props.list.map(item =>
                 <Link to={`/${item.code}`}>{item.name}</Link>
               )
             }
           </TagCloud>     */}
         </div>
       </div>
-      
-    
+
     );
   }
 }
 Cloud.propTypes = {
+  // eslint-disable-next-line react/no-unused-prop-types
   list: PropTypes.arrayOf(PropTypes.shape({
     code: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-  }))
-}
+  })).isRequired,
+};
 export default Cloud;

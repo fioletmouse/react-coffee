@@ -1,54 +1,54 @@
 import data from '../data';
 
-function CoffeeActions () {
+function CoffeeActions() {
   let cachedList = null;
 
   const getAll = () => {
-    if(cachedList) {
+    if (cachedList) {
       return cachedList;
     }
 
     cachedList = data;
     return data;
-  }
+  };
 
   // TODO improve to part search
   const findByName = (name) => {
     const allData = getAll();
-    if(!name) {
+    if (!name) {
       return allData;
     }
     const lowerName = name.toLowerCase();
-    const item = allData.find( item => item.name.toLowerCase() === lowerName);
+    const item = allData.find((item) => item.name.toLowerCase() === lowerName);
 
-    if(item) {
+    if (item) {
       return [item];
     }
     return [];
-  }
+  };
 
   const emptyArticleObject = {
     code: '',
     name: '',
     image: '',
-    info:''
-  }
+    info: '',
+  };
 
   const findByCode = (code) => {
     const allData = getAll();
-    if(!code) {
+    if (!code) {
       return emptyArticleObject;
     }
-    const item = allData.find( item => item.code === code);
+    const item = allData.find((item) => item.code === code);
 
     return item;
-  }
+  };
 
   return {
     getAll,
     findByName,
-    findByCode
-  }
+    findByCode,
+  };
 }
 
 export default CoffeeActions();
