@@ -7,6 +7,7 @@ function ArticleHeader(props) {
         <h3 className="text-center">
           {props.name}
         </h3>
+        <button type="button" onClick={() => props.onClick(null)}>Close</button>
       </div>
     </div>
   );

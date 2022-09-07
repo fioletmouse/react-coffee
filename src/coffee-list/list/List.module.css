@@ -1,6 +1,0 @@
-.listBody > li {
-  list-style-type: none; /* Убираем маркеры */
-  padding: 10px;
-  margin: 10px;
-  background-color: black;
- }

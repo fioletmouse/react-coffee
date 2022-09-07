@@ -28,7 +28,7 @@ function CoffeeList() {
       <div className="row">
         {loader && <div> Loading...</div>}
         {!loader && ((recipes && recipes.length > 0)
-          ? <List list={recipes} onClick={selectType} />
+          ? <List list={recipes} onClick={selectType} isSelected={!!code} />
           : <div>No data found</div>)}
         { code && <Article code={code} onClick={selectType} /> }
       </div>

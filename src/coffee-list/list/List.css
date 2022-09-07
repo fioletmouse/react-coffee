@@ -1,0 +1,26 @@
+ div.block {
+  height: 100px;
+  background-color: black;
+  flex: 1 1 calc((100% / 6) - 2rem);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.block > button {
+  color: whitesmoke;
+  background-color: black;
+  font-size: large;
+}
+div.block > button:hover {
+  color: #0056b3;
+}
+div.block > button:focus {
+  outline: none;
+}
+.gap_class {
+  gap: 1rem;
+}
+.margin_with_article {
+  margin-left: 5%;
+}

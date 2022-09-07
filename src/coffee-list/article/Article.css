@@ -1,0 +1,16 @@
+.article_border {
+    border-left: solid 3px black;
+    margin-left: 5%;
+    padding-left: 20px;
+}
+.floating {
+    float: left;
+    margin-right: 15px;
+}
+
+.close_btn {
+    border-radius: 30%;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+}

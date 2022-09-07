@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import styles from './List.module.css';
+import './List.css';
 
-function List({ list, onClick }) {
+function List({ list, onClick, isSelected }) {
   return (
-    <div className="offset-1 col-2">
-      <ul className={styles.listBody}>
+    <div className={`${isSelected ? 'col-4 margin_with_article' : 'col-12'}`}>
+      <div className="row gap_class">
         { list.map((item) => (
-          <li key={item.code}>
+          <div key={item.code} className="block">
             <button type="button" onClick={() => { onClick(item.code); }}>{item.name}</button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
@@ -22,6 +22,10 @@ List.propTypes = {
     name: PropTypes.string.isRequired,
   })).isRequired,
   onClick: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool,
+};
+List.defaultProps = {
+  isSelected: false,
 };
 
 export default List;
