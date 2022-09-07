@@ -1,7 +1,6 @@
 import data from './data';
 
 function CoffeeActions() {
-  // eslint-disable-next-line no-unused-vars
   let cachedList = null;
 
   const getRecipesList = async () => {
@@ -38,21 +37,20 @@ function CoffeeActions() {
   //   info: '',
   // };
 
-  // const findByCode = (code) => {
-  //   const allData = getAll();
-  //   if (!code) {
-  //     return emptyArticleObject;
-  //   }
-  //   // eslint-disable-next-line no-shadow
-  //   const item = allData.find((item) => item.code === code);
+  const findByCode = async (code) => {
+    if (!code) {
+      return null;
+    }
+    // eslint-disable-next-line no-shadow
+    const item = data.find((item) => item.code === code);
 
-  //   return item;
-  // };
+    return item;
+  };
 
   return {
     getRecipesList,
     // findByName,
-    // findByCode,
+    findByCode,
   };
 }
 
