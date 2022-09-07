@@ -14,6 +14,7 @@ function CoffeeList() {
   };
 
   useEffect(() => {
+    setLoader(true);
     CoffeeActions.getRecipesList()
       .then((data) => {
         setRecipes(data);
