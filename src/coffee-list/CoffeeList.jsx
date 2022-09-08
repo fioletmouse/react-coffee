@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CoffeeActions from '../services/data-handler';
 import Header from '../shared/header/Header';
 import Loader from '../shared/loader/Loader';
-import Article from './article/Article';
+import ArticleContainer from './article/ArticleContainer';
 import List from './list/List';
 
 function CoffeeList() {
@@ -27,11 +27,11 @@ function CoffeeList() {
     <>
       <Header />
       <div className="row">
-        {loader && <Loader />}
+        <Loader isLoading={loader} />
         {!loader && ((recipes && recipes.length > 0)
           ? <List list={recipes} onClick={selectType} isSelected={!!code} />
           : <div>No data found</div>)}
-        { code && <Article code={code} onClick={selectType} /> }
+        { code && <ArticleContainer code={code} onClick={selectType} /> }
       </div>
     </>
   );

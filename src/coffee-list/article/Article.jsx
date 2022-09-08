@@ -1,34 +1,10 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
-import CoffeeActions from '../../services/data-handler';
-import Loader from '../../shared/loader/Loader';
+import React from 'react';
 import './Article.css';
 
-function Article({ code, onClick }) {
-  const [articleData, setArticleData] = useState(null);
-  const [loader, setLoader] = useState(true);
-
-  useEffect(() => {
-    setLoader(true);
-    CoffeeActions.findByCode(code).then((item) => {
-      setArticleData({ name: item.name, image: item.image, info: item.info });
-      setLoader(false);
-    });
-  }, [code]);
-
-  if (loader) {
-    return (
-      <div className="col-6 article_border">
-        <div className="row">
-          <Loader />
-        </div>
-      </div>
-    );
-  }
-  if (!code) return null;
-
+function Article({ articleData, onClick }) {
   return (
-    <div className="col-6 article_border">
+    <>
       <div className="row">
         <div className="col-10">
           <h3 className="text-center">
@@ -46,12 +22,16 @@ function Article({ code, onClick }) {
           <p className="text-justify">{articleData.info}</p>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
 Article.propTypes = {
-  code: PropTypes.string.isRequired,
+  articleData: PropTypes.objectOf({
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    info: PropTypes.string.isRequired,
+  }).isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
