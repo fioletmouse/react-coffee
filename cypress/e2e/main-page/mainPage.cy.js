@@ -16,4 +16,19 @@ describe('main page spec', () => {
     cy.contains("tools").click()
     cy.url().should('include', '/tools')
   })
+
+  it('open blends page',  () => {
+    cy.contains("blends").click()
+    cy.url().should('include', '/blends')
+  })
+
+  it('open recipes page',  () => {
+    cy.contains("recipes").click()
+    cy.url().should('include', '/recipes')
+  })
+
+  it('open other page',  () => {
+    cy.contains("other").click()
+    cy.url().should('include', '/other')
+  })
 })
