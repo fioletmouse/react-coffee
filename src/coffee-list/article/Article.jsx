@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import CoffeeActions from '../../services/data-handler';
+import Loader from '../../shared/loader/Loader';
 import './Article.css';
 
 function Article({ code, onClick }) {
@@ -15,7 +16,15 @@ function Article({ code, onClick }) {
     });
   }, [code]);
 
-  if (loader) return <div>Loading...</div>;
+  if (loader) {
+    return (
+      <div className="col-6 article_border">
+        <div className="row">
+          <Loader />
+        </div>
+      </div>
+    );
+  }
   if (!code) return null;
 
   return (
