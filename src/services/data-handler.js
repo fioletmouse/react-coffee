@@ -39,6 +39,7 @@ function CoffeeActions() {
   //   info: '',
   // };
 
+  const findByCodeError = async () => Promise.reject(new Error('Fail to load'));
   const findByCode = async (code) => {
     if (!code) {
       return null;
@@ -54,6 +55,7 @@ function CoffeeActions() {
     getRecipesListError,
     // findByName,
     findByCode,
+    findByCodeError,
   };
 }
 

@@ -7,6 +7,7 @@ import List from './list/List';
 function CoffeeList() {
   const [recipes, setRecipes] = useState([]);
   const [recipesLoader, setRecipesLoader] = useState(true);
+  const [recipesError, setRecipesError] = useState(null);
   const [articleData, setArticleData] = useState(null);
   const [articleLoader, setArticleLoader] = useState(true);
   const [code, setCode] = useState(null);
@@ -16,12 +17,13 @@ function CoffeeList() {
   };
 
   useEffect(() => {
+    setRecipesError(null);
     setRecipesLoader(true);
     CoffeeActions.getRecipesList()
       .then((data) => {
         setRecipes(data);
         setRecipesLoader(false);
-      }).catch((err) => { console.log(err); setRecipesLoader(false); });
+      }).catch((err) => { setRecipesError(err); setRecipesLoader(false); });
   }, []);
 
   useEffect(() => {
@@ -30,11 +32,11 @@ function CoffeeList() {
     CoffeeActions.findByCode(code).then((item) => {
       setArticleData({ name: item.name, image: item.image, info: item.info });
       setArticleLoader(false);
-    }).catch(() => setArticleLoader(false));
+    }).catch(() => { setArticleLoader(false); });
   }, [code]);
 
   return (
-    <PageContainer loader={recipesLoader}>
+    <PageContainer loader={recipesLoader} error={recipesError}>
       {!recipesLoader && <List list={recipes} onClick={selectType} isSelected={!!code} /> }
       { code && (
       <ArticleContainer
