@@ -5,7 +5,7 @@ import pages from './pagesList';
 
 import Blends from '../blends/Blends';
 import CoffeeList from '../coffee-list/CoffeeList';
-import Other from '../other/Other';
+import Dict from '../dict/Dict';
 import Tools from '../tools/Tools';
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
       <Route path="/tools" element={<Tools />} />
       <Route path="/blends" element={<Blends />} />
       <Route path="/recipes" element={<CoffeeList />} />
-      <Route path="/other" element={<Other />} />
+      <Route path="/dict" element={<Dict />} />
     </Routes>
   );
 }

@@ -9,7 +9,7 @@ describe('main page spec', () => {
     cy.get("a[href='/tools']").should("have.text", "tools")
     cy.get("a[href='/blends']").should("have.text", "blends")
     cy.get("a[href='/recipes']").should("have.text", "recipes")
-    cy.get("a[href='/other']").should("have.text", "other")
+    cy.get("a[href='/dict']").should("have.text", "dict")
   })
 
   it('open tools page',  () => {
@@ -27,8 +27,8 @@ describe('main page spec', () => {
     cy.url().should('include', '/recipes')
   })
 
-  it('open other page',  () => {
-    cy.contains("other").click()
-    cy.url().should('include', '/other')
+  it('open dict page',  () => {
+    cy.contains("dict").click()
+    cy.url().should('include', '/dict')
   })
 })
