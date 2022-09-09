@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import './Article.css';
+import articleProps from './articleProps';
 
 function Article({ articleData, onClick }) {
   return (
@@ -27,11 +28,7 @@ function Article({ articleData, onClick }) {
 }
 
 Article.propTypes = {
-  articleData: PropTypes.objectOf({
-    name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    info: PropTypes.string.isRequired,
-  }).isRequired,
+  articleData: PropTypes.objectOf(articleProps).isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
