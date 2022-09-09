@@ -6,8 +6,9 @@
     "start": "%ESLINT_NO_DEV_ERRORS='true'% react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "cy-open": "cypress open",
-    "cy-c-open": "cypress open --component",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run --spec 'cypress/e2e/recipes/*.cy.js'",
+    "cy-c:open": "cypress open --component",
     "eject": "react-scripts eject",
     "lint": "eslint --ignore-path .gitignore -c .eslintrc.json  .",
     "lint:fix": "npm run lint -- --fix"

@@ -3,6 +3,8 @@ import data from './data';
 function CoffeeActions() {
   let cachedList = null;
 
+  const getRecipesListError = async () => Promise.reject(new Error('Fail to load'));
+
   const getRecipesList = async () => {
     if (cachedList) {
       return cachedList;
@@ -49,6 +51,7 @@ function CoffeeActions() {
 
   return {
     getRecipesList,
+    getRecipesListError,
     // findByName,
     findByCode,
   };

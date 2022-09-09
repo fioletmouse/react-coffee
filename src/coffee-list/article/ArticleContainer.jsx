@@ -10,6 +10,7 @@ function ArticleContainer({ articleLoader, articleData, onClick }) {
     <div className="col-6 article_border">
       <Loader isLoading={articleLoader} />
       {articleData && <Article articleData={articleData} onClick={onClick} /> }
+      {!articleData && <div>No data found</div>}
     </div>
   );
 }

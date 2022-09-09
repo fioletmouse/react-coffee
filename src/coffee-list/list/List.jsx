@@ -3,6 +3,8 @@ import React from 'react';
 import './List.css';
 
 function List({ list, onClick, isSelected }) {
+  if (!list || list.length === 0) return <div>No data found</div>;
+
   return (
     <div className={`${isSelected ? 'col-4 margin_with_article' : 'col-12'}`}>
       <div className="row gap_class">

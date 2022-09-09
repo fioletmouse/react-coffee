@@ -21,7 +21,7 @@ function CoffeeList() {
       .then((data) => {
         setRecipes(data);
         setRecipesLoader(false);
-      }).catch(() => setRecipesLoader(false));
+      }).catch((err) => { console.log(err); setRecipesLoader(false); });
   }, []);
 
   useEffect(() => {
@@ -30,14 +30,12 @@ function CoffeeList() {
     CoffeeActions.findByCode(code).then((item) => {
       setArticleData({ name: item.name, image: item.image, info: item.info });
       setArticleLoader(false);
-    });
+    }).catch(() => setArticleLoader(false));
   }, [code]);
 
   return (
     <PageContainer loader={recipesLoader}>
-      {!recipesLoader && ((recipes && recipes.length > 0)
-        ? <List list={recipes} onClick={selectType} isSelected={!!code} />
-        : <div>No data found</div>)}
+      {!recipesLoader && <List list={recipes} onClick={selectType} isSelected={!!code} /> }
       { code && (
       <ArticleContainer
         articleLoader={articleLoader}
