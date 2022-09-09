@@ -11,16 +11,17 @@ function ArticleContainer({ code, onClick }) {
 
   useEffect(() => {
     setLoader(true);
+    setArticleData(null);
     CoffeeActions.findByCode(code).then((item) => {
       setArticleData({ name: item.name, image: item.image, info: item.info });
-      setTimeout(() => { setLoader(false); }, 3000);
+      setLoader(false);
     });
   }, [code]);
 
   return (
     <div className="col-6 article_border">
       <Loader isLoading={loader} />
-      {!loader && <Article articleData={articleData} onClick={onClick} /> }
+      {articleData && <Article articleData={articleData} onClick={onClick} /> }
     </div>
   );
 }
