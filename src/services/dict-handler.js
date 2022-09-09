@@ -1,7 +1,10 @@
-function DictActions() {
+function DictActions(path) {
+  const tt = path;
+  console.log(tt);
   let processing = null;
   const getProcessing = async () => processing;
   const addProcessing = async (value) => {
+    console.log(`called file with parameter ${tt}`);
     if (!processing) processing = [];
     processing.push({ id: Math.random(), name: value });
   };
