@@ -1,13 +1,16 @@
 .block {
-    color: whitesmoke;
+    color: var(--second-color);
     font-size: xx-large;
     font-family: fantasy;
-    border: 1px black solid;
-    background-color: black;
+    border: 1px var(--main-color) solid;
+    background-color: var(--main-color);
     border-radius: 10px;
     min-width: 300px;
     min-height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.block:hover {
+    color: var(--hover-color);
 }

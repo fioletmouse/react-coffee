@@ -3,6 +3,9 @@ import React from 'react';
 import MainBlock from './main-block/MainBlock';
 
 function MainPage({ pages }) {
+  // document.documentElement.style.setProperty('--main-color', 'red');
+  // document.documentElement.style.setProperty('--second-color', 'black');
+  // document.documentElement.style.setProperty('--hover-color', 'green');
   return (
     <div className="row">
       {

@@ -1,6 +1,6 @@
  div.block {
   height: 100px;
-  background-color: black;
+  background-color: var(--main-color);
   flex: 1 1 calc((100% / 6) - 2rem);
   border-radius: 10px;
   display: flex;
@@ -8,15 +8,18 @@
   align-items: center;
 }
 div.block > button {
-  color: whitesmoke;
-  background-color: black;
+  color: var(--second-color);
+  background-color: var(--main-color);
   font-size: large;
 }
 div.block > button:hover {
-  color: #0056b3;
+  color: var(--hover-color);
 }
 div.block > button:focus {
   outline: none;
+}
+div.block button {
+  border: none;
 }
 .gap_class {
   gap: 1rem;

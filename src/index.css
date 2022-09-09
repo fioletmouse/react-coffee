@@ -1,0 +1,6 @@
+:root {
+    --main-color: black;
+    --second-color: whitesmoke;
+    --hover-color: #0056b3;
+}
+/*document.documentElement.style.setProperty('--main-color', 'blue'); */

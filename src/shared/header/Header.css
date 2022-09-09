@@ -1,7 +1,7 @@
 .header {
     font-size: 32px;
     font-family: fantasy;
-    background-color: black;
+    background-color: var(--main-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +9,10 @@
 }
 
 .header_btn {
-    color: whitesmoke;  
+    color: var(--second-color);  
+}
+.header_btn:hover {
+    color: var(--hover-color);
 }
 
 .selected {
@@ -17,6 +20,6 @@
 }
 
 .selected:hover {
-    color:whitesmoke;
+    color:var(--second-color);
     cursor: default;
 }
