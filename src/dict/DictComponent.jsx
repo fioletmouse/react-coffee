@@ -11,7 +11,7 @@ function DictComponent({ dictName }) {
   const dictInstance = useMemo(() => DictActions(dictName), [dictName]);
 
   const getDictData = () => {
-    // setRecipesError(null);
+    setDictError(null);
     setDictLoader(true);
     dictInstance.getDictData()
       .then((data) => {

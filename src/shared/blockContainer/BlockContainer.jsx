@@ -2,21 +2,17 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import errorMsgProps from '../error/ErrorMasProps';
 import ErrorMsg from '../error/ErrorMsg';
-import Header from '../header/Header';
 import Loader from '../loader/Loader';
 
 function BlockContainer({
-  children, loader, error, showHeader,
+  children, loader, error, inheritedClass,
 }) {
   return (
-    <>
-      { showHeader && <Header /> }
-      <div className="row">
-        <ErrorMsg error={error} />
-        <Loader isLoading={loader} />
-        {!error && !loader && children}
-      </div>
-    </>
+    <div className={inheritedClass}>
+      <ErrorMsg error={error} />
+      <Loader isLoading={loader} />
+      {!error && !loader && children}
+    </div>
   );
 }
 
@@ -27,12 +23,12 @@ BlockContainer.propTypes = {
   ]).isRequired,
   loader: PropTypes.bool,
   error: errorMsgProps,
-  showHeader: PropTypes.bool,
+  inheritedClass: PropTypes.string,
 };
 BlockContainer.defaultProps = {
   loader: true,
   error: null,
-  showHeader: true,
+  inheritedClass: 'col-12',
 };
 
 export default BlockContainer;
