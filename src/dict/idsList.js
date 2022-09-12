@@ -1,4 +1,4 @@
 export default {
-  processing: 'processing',
-  brewing: 'brewing',
+  processing: { name: 'Processing', path: 'processing' },
+  brewing: { name: 'Brewing', path: 'brewing' },
 };

@@ -1,15 +1,15 @@
 import React from 'react';
-import Header from '../shared/header/Header';
+import PageContainer from '../shared/pageContainer/PageContainer';
+import './Dict.css';
 import DictComponent from './DictComponent';
 import ids from './idsList';
 
 function Dict() {
   return (
-    <>
-      <Header />
-      <DictComponent dictName={ids.processing} />
-      <DictComponent dictName={ids.brewing} />
-    </>
+    <PageContainer>
+      <DictComponent dictParams={ids.processing} appliedClass="bottom_line right_line" />
+      <DictComponent dictParams={ids.brewing} appliedClass="bottom_line" />
+    </PageContainer>
   );
 }
 

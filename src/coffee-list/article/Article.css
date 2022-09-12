@@ -7,14 +7,3 @@
     float: left;
     margin-right: 15px;
 }
-
-.close_btn {
-    border-radius: 30%;
-    background-color: var(--main-color);
-    border-color: var(--main-color);
-    color: var(--second-color);
-    font-weight: 600;
-}
-.close_btn:hover {
-    color: var(--hover-color);
-}

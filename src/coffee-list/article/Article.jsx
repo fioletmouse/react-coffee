@@ -13,7 +13,7 @@ function Article({ articleData, onClick }) {
           </h3>
         </div>
         <div className="col-2 text-right">
-          <button type="button" className="close_btn" onClick={() => onClick(null)}>X</button>
+          <button type="button" className="custom_btn" onClick={() => onClick(null)}>X</button>
         </div>
       </div>
 
