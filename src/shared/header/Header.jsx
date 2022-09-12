@@ -9,6 +9,7 @@ function Header() {
       {
         pages.map((page) => (
           <NavLink
+            key={page.path}
             to={`/${page.path}`}
             className={({ isActive }) => (`${isActive ? 'selected' : ''} col-2 header_btn`)}
           >
