@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { X } from 'react-feather';
 import './Article.css';
 import articleProps from './articleProps';
 
@@ -13,7 +14,9 @@ function Article({ articleData, onClick }) {
           </h3>
         </div>
         <div className="col-2 text-right">
-          <button type="button" className="custom_btn" onClick={() => onClick(null)}>X</button>
+          <button type="button" className="custom_btn" onClick={() => onClick(null)}>
+            <X color="white" size="15" />
+          </button>
         </div>
       </div>
 
