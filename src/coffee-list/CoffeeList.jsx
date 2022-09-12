@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CoffeeActions from '../services/data-handler';
-import PageContainer from '../shared/pageContainer/PageContainer';
+import BlockContainer from '../shared/blockContainer/BlockContainer';
 import ArticleContainer from './article/ArticleContainer';
 import List from './list/List';
 
@@ -36,7 +36,7 @@ function CoffeeList() {
   }, [code]);
 
   return (
-    <PageContainer loader={recipesLoader} error={recipesError}>
+    <BlockContainer loader={recipesLoader} error={recipesError}>
       {!recipesLoader && <List list={recipes} onClick={selectType} isSelected={!!code} /> }
       { code && (
       <ArticleContainer
@@ -45,7 +45,7 @@ function CoffeeList() {
         onClick={selectType}
       />
       ) }
-    </PageContainer>
+    </BlockContainer>
   );
 }
 

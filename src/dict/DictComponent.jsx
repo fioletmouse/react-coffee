@@ -1,37 +1,39 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useMemo, useState } from 'react';
 import DictActions from '../services/dict-handler';
-import Loader from '../shared/loader/Loader';
+import BlockContainer from '../shared/blockContainer/BlockContainer';
 
 function DictComponent({ dictName }) {
-  const [processingLoader, setProcessingLoader] = useState(true);
-  const [processing, setProcessing] = useState(null);
+  const [dictLoader, setDictLoader] = useState(true);
+  const [dictData, setDictData] = useState(null);
+  const [dictError, setDictError] = useState(null);
+  // temp solution, when work with a server - passing url will be enought
   const dictInstance = useMemo(() => DictActions(dictName), [dictName]);
 
-  const getProcessing = () => {
+  const getDictData = () => {
     // setRecipesError(null);
-    setProcessingLoader(true);
-    dictInstance.getProcessing()
+    setDictLoader(true);
+    dictInstance.getDictData()
       .then((data) => {
-        setProcessing(data);
-        setProcessingLoader(false);
-      }).catch(() => { /* setRecipesError(err); */ setProcessingLoader(false); });
+        setDictData(data);
+        setDictLoader(false);
+      }).catch((err) => { setDictError(err); setDictLoader(false); });
   };
+
   useEffect(() => {
-    getProcessing();
+    getDictData();
   }, []);
 
   const addProcesing = () => {
-    dictInstance.addProcessing(`value${Math.random()}`);
-    getProcessing();
+    dictInstance.addDictData(`value${Math.random()}`);
+    getDictData();
   };
 
   return (
-    <div>
-      <Loader loader={processingLoader} />
+    <BlockContainer loader={dictLoader} error={dictError} showHeader={false}>
       <button type="button" onClick={addProcesing}> Add</button>
-      {processing && processing.map((item) => <div>{item.name}</div>)}
-    </div>
+      {dictData && dictData.map((item) => <div>{item.name}</div>)}
+    </BlockContainer>
   );
 }
 

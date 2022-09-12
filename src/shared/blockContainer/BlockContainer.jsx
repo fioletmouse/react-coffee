@@ -5,10 +5,12 @@ import ErrorMsg from '../error/ErrorMsg';
 import Header from '../header/Header';
 import Loader from '../loader/Loader';
 
-function PageContainer({ children, loader, error }) {
+function BlockContainer({
+  children, loader, error, showHeader,
+}) {
   return (
     <>
-      <Header />
+      { showHeader && <Header /> }
       <div className="row">
         <ErrorMsg error={error} />
         <Loader isLoading={loader} />
@@ -18,17 +20,19 @@ function PageContainer({ children, loader, error }) {
   );
 }
 
-PageContainer.propTypes = {
+BlockContainer.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]).isRequired,
   loader: PropTypes.bool,
   error: errorMsgProps,
+  showHeader: PropTypes.bool,
 };
-PageContainer.defaultProps = {
+BlockContainer.defaultProps = {
   loader: true,
   error: null,
+  showHeader: true,
 };
 
-export default PageContainer;
+export default BlockContainer;
