@@ -15,7 +15,7 @@ function DictActions(path) {
   };
 
   const deleteDictData = async (id) => {
-    dictData.filter((item) => item.id !== id);
+    dictData = dictData.filter((item) => item.id !== id);
   };
 
   return {

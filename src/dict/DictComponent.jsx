@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import * as Icons from 'react-feather';
 import DictActions from '../services/dict-handler';
 import BlockContainer from '../shared/blockContainer/BlockContainer';
+import Input from '../shared/input/Input';
 import './Dict.css';
 
 function DictComponent({ dictParams, appliedClass }) {
@@ -12,6 +13,7 @@ function DictComponent({ dictParams, appliedClass }) {
   // temp solution, when work with a server - passing url will be enought
   const dictInstance = useMemo(() => DictActions(dictParams.path), [dictParams.path]);
 
+  const [addInputHidden, setAddInputHidden] = useState(true);
   const getDictData = () => {
     setDictError(null);
     setDictLoader(true);
@@ -26,8 +28,8 @@ function DictComponent({ dictParams, appliedClass }) {
     getDictData();
   }, []);
 
-  const addDictData = () => {
-    dictInstance.addDictData(`value${Math.random()}`)
+  const addDictData = (event) => {
+    dictInstance.addDictData(`${event} ${Math.random()}`)
       .then((data) => {
         setDictData(data);
         getDictData();
@@ -35,36 +37,40 @@ function DictComponent({ dictParams, appliedClass }) {
   };
   const updateDictData = (id) => {
     dictInstance.updateDictData(id)
-      .then((data) => {
-        setDictData(data);
+      .then(() => {
         getDictData();
       }).catch((err) => { setDictError(err); });
   };
   const deleteDictData = (id) => {
     dictInstance.deleteDictData(id)
-      .then((data) => {
-        setDictData(data);
+      .then(() => {
         getDictData();
       }).catch((err) => { setDictError(err); });
   };
 
   return (
     <BlockContainer loader={dictLoader} error={dictError} inheritedClass={`col-6 ${appliedClass}`}>
-      <h4>{dictParams.name}</h4>
-      <button type="button" onClick={addDictData} className="custom_btn">
-        <Icons.Plus color="white" size="15" />
-      </button>
+      <div className="row">
+        <div className="col-12">
+          <h4>{dictParams.name}</h4>
+          <button type="button" onClick={() => setAddInputHidden(false)} className="custom_btn">
+            <Icons.Plus color="white" size="15" />
+          </button>
+          { !addInputHidden && <Input submitHandler={addDictData} hideBlock={setAddInputHidden} /> }
+        </div>
+      </div>
+
       {dictData && dictData.map((item) => (
         <div className="row" key={item.id}>
-          <div className="col-3 text-left">
+          <div className="col-12">
             <button type="button" onClick={() => updateDictData(item.id)} className="custom_btn">
               <Icons.Edit2 color="white" size="15" />
             </button>
             <button type="button" onClick={() => deleteDictData(item.id)} className="custom_btn">
               <Icons.Trash color="white" size="15" />
             </button>
+            <span>{ item.name }</span>
           </div>
-          <div className="col-9">{item.name}</div>
         </div>
       ))}
     </BlockContainer>
