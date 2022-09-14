@@ -1,9 +1,12 @@
 function DictActions(path) {
   let dictData = null;
   const getDictData = async () => dictData;
+  // Test mock data
+  if (path === 'processing') {
+    dictData = [{ id: 1, name: 'Мытая' }, { id: 2, name: 'Сухая' }];
+  }
 
   const addDictData = async (value) => {
-    console.log(`called file with parameter ${path}`);
     if (!dictData) dictData = [];
     dictData.push({ id: Math.random(), name: value });
   };

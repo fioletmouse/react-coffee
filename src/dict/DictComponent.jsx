@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useMemo, useState } from 'react';
 import * as Icons from 'react-feather';
 import DictActions from '../services/dict-handler';
+import ActionInput from '../shared/actionInput/ActionInput';
 import BlockContainer from '../shared/blockContainer/BlockContainer';
-import Input from '../shared/input/Input';
 import './Dict.css';
 
 function DictComponent({ dictParams, appliedClass }) {
@@ -13,7 +13,6 @@ function DictComponent({ dictParams, appliedClass }) {
   // temp solution, when work with a server - passing url will be enought
   const dictInstance = useMemo(() => DictActions(dictParams.path), [dictParams.path]);
 
-  const [addInputHidden, setAddInputHidden] = useState(true);
   const getDictData = () => {
     setDictError(null);
     setDictLoader(true);
@@ -28,15 +27,15 @@ function DictComponent({ dictParams, appliedClass }) {
     getDictData();
   }, []);
 
-  const addDictData = (event) => {
-    dictInstance.addDictData(`${event} ${Math.random()}`)
+  const addDictData = (name) => {
+    dictInstance.addDictData(name)
       .then((data) => {
         setDictData(data);
         getDictData();
       }).catch((err) => { setDictError(err); });
   };
-  const updateDictData = (id) => {
-    dictInstance.updateDictData(id)
+  const updateDictData = (id, text) => {
+    dictInstance.updateDictData(id, text)
       .then(() => {
         getDictData();
       }).catch((err) => { setDictError(err); });
@@ -53,11 +52,7 @@ function DictComponent({ dictParams, appliedClass }) {
       <div className="row">
         <div className="col-12">
           <h4>{dictParams.name}</h4>
-          <button type="button" onClick={() => setAddInputHidden((prev) => !prev)} className="custom_btn">
-            { addInputHidden && <Icons.Plus color="white" size="15" /> }
-            { !addInputHidden && <Icons.X color="white" size="15" /> }
-          </button>
-          { !addInputHidden && <Input submitHandler={addDictData} hideBlock={setAddInputHidden} /> }
+          <ActionInput actionHandler={addDictData} />
         </div>
       </div>
 
@@ -67,13 +62,15 @@ function DictComponent({ dictParams, appliedClass }) {
             <button type="button" onClick={() => deleteDictData(item.id)} className="custom_btn">
               <Icons.Trash color="white" size="15" />
             </button>
-            <button type="button" onClick={() => updateDictData(item.id)} className="custom_btn">
-              <Icons.Edit2 color="white" size="15" />
-            </button>
-            <span>{ item.name }</span>
+            <ActionInput
+              actionHandler={updateDictData}
+              initialObject={item}
+              actionComponent={<Icons.Edit2 color="white" size="15" />}
+            />
           </div>
         </div>
       ))}
+      {!dictData && <div>No data found</div>}
     </BlockContainer>
   );
 }
