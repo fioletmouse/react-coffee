@@ -24,7 +24,7 @@ describe('recipes list page spec', () => {
 
     it('should close article on click', () => {
         cy.get('@doppio').click();
-        cy.contains('button', 'X').click();
+        cy.get("[data-test='button_close']").click();
         cy.get('h3').should('not.exist');
         cy.get('.block').should('have.length', 11)
     })
