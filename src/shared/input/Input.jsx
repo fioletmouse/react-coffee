@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { Check } from 'react-feather';
 import './Input.css';
 
-function Input({ submitHandler, hideBlock }) {
-  const [inputText, setInputText] = useState('');
+function Input({ initialValue, submitHandler, hideBlock }) {
+  const [inputText, setInputText] = useState(initialValue);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,12 +27,14 @@ function Input({ submitHandler, hideBlock }) {
 }
 
 Input.propTypes = {
+  initialValue: PropTypes.string,
   submitHandler: PropTypes.func,
   hideBlock: PropTypes.func,
 };
 Input.defaultProps = {
   submitHandler: null,
   hideBlock: null,
+  initialValue: '',
 };
 
 export default Input;

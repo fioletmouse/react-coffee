@@ -53,8 +53,9 @@ function DictComponent({ dictParams, appliedClass }) {
       <div className="row">
         <div className="col-12">
           <h4>{dictParams.name}</h4>
-          <button type="button" onClick={() => setAddInputHidden(false)} className="custom_btn">
-            <Icons.Plus color="white" size="15" />
+          <button type="button" onClick={() => setAddInputHidden((prev) => !prev)} className="custom_btn">
+            { addInputHidden && <Icons.Plus color="white" size="15" /> }
+            { !addInputHidden && <Icons.X color="white" size="15" /> }
           </button>
           { !addInputHidden && <Input submitHandler={addDictData} hideBlock={setAddInputHidden} /> }
         </div>
@@ -63,11 +64,11 @@ function DictComponent({ dictParams, appliedClass }) {
       {dictData && dictData.map((item) => (
         <div className="row" key={item.id}>
           <div className="col-12">
-            <button type="button" onClick={() => updateDictData(item.id)} className="custom_btn">
-              <Icons.Edit2 color="white" size="15" />
-            </button>
             <button type="button" onClick={() => deleteDictData(item.id)} className="custom_btn">
               <Icons.Trash color="white" size="15" />
+            </button>
+            <button type="button" onClick={() => updateDictData(item.id)} className="custom_btn">
+              <Icons.Edit2 color="white" size="15" />
             </button>
             <span>{ item.name }</span>
           </div>
