@@ -15,7 +15,12 @@ function ActionInput({ actionHandler, initialObject, actionComponent }) {
   };
   return (
     <>
-      <button type="button" onClick={() => setAddInputHidden((prev) => !prev)} className="custom_btn">
+      <button
+        type="button"
+        data-test={`${initialObject.id ? 'edit' : 'add'}_btn`}
+        onClick={() => setAddInputHidden((prev) => !prev)}
+        className="custom_btn"
+      >
         { addInputHidden && actionComponent }
         { !addInputHidden && <Icons.X color="white" size="15" /> }
       </button>

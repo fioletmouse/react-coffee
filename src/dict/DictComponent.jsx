@@ -28,6 +28,7 @@ function DictComponent({ dictParams, appliedClass }) {
   }, []);
 
   const addDictData = (name) => {
+    if (name.trim().length === 0) return;
     dictInstance.addDictData(name)
       .then((data) => {
         setDictData(data);
@@ -35,6 +36,7 @@ function DictComponent({ dictParams, appliedClass }) {
       }).catch((err) => { setDictError(err); });
   };
   const updateDictData = (id, text) => {
+    if (text.trim().length === 0) return;
     dictInstance.updateDictData(id, text)
       .then(() => {
         getDictData();
@@ -50,7 +52,7 @@ function DictComponent({ dictParams, appliedClass }) {
   return (
     <BlockContainer loader={dictLoader} error={dictError} inheritedClass={`col-6 ${appliedClass}`}>
       <div className="row">
-        <div className="col-12">
+        <div className="col-12" data-test={`header_${dictParams.name}`}>
           <h4>{dictParams.name}</h4>
           <ActionInput actionHandler={addDictData} />
         </div>
@@ -59,7 +61,12 @@ function DictComponent({ dictParams, appliedClass }) {
       {dictData && dictData.map((item) => (
         <div className="row" key={item.id}>
           <div className="col-12">
-            <button type="button" onClick={() => deleteDictData(item.id)} className="custom_btn">
+            <button
+              type="button"
+              data-test={`button_delete_${dictParams.name}`}
+              onClick={() => deleteDictData(item.id)}
+              className="custom_btn"
+            >
               <Icons.Trash color="white" size="15" />
             </button>
             <ActionInput
@@ -70,7 +77,7 @@ function DictComponent({ dictParams, appliedClass }) {
           </div>
         </div>
       ))}
-      {!dictData && <div>No data found</div>}
+      {(!dictData || dictData.length === 0) && <div>No data found</div>}
     </BlockContainer>
   );
 }

@@ -19,7 +19,7 @@ function Input({ initialValue, changeHandler, hideBlock }) {
   return (
     <form onSubmit={handleSubmit}>
       <input onChange={(e) => setInputText(e.target.value)} value={inputText} />
-      <button className="custom_btn" type="button" onClick={(e) => handleSubmit(e)}>
+      <button className="custom_btn" type="button" data-test="button_submit" onClick={(e) => handleSubmit(e)}>
         <Check color="white" size="15" />
       </button>
     </form>
