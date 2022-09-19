@@ -6,11 +6,15 @@ import {
 import BlendsActions from '../services/blends-handler';
 import BlockContainer from '../shared/blockContainer/BlockContainer';
 import PageContainer from '../shared/pageContainer/PageContainer';
+import './Blends.css';
+import BlendDetails from './details/BlendDetails';
 
 function Blends() {
   const [blendsData, setBlendsData] = useState(null);
   const [blendsLoader, setBlendsLoader] = useState(true);
   const [blendsError, setBlendsError] = useState(null);
+
+  const [blendData, setBlendData] = useState(null);
 
   useEffect(() => {
     setBlendsError(null);
@@ -22,6 +26,16 @@ function Blends() {
       }).catch((err) => { setBlendsError(err); setBlendsLoader(false); });
   }, []);
 
+  const viewClick = (id) => {
+    // eslint-disable-next-line no-undef
+    $('.collapse').collapse('hide');
+    BlendsActions.getBlendInfo(id)
+      .then((data) => {
+        setBlendData(data);
+        // eslint-disable-next-line no-undef
+        $(`#collapseBlend_${id}`).collapse('toggle');
+      });
+  };
   return (
     <PageContainer>
       <BlockContainer loader={blendsLoader} error={blendsError}>
@@ -31,7 +45,7 @@ function Blends() {
               <th scope="col">#</th>
               <th scope="col">Country</th>
               <th scope="col">Name</th>
-              <th scope="col">Processing</th>
+              <th scope="col">Method</th>
               <th scope="col">Taste</th>
               <th scope="col">
                 <button type="button" className="custom_btn">
@@ -42,24 +56,36 @@ function Blends() {
           </thead>
           <tbody>
             {blendsData && blendsData.map((blend) => (
-              <tr>
-                <th scope="row">{blend.id}</th>
-                <td>{blend.country}</td>
-                <td>{blend.name}</td>
-                <td>
-                  {blend.processing === 'мытая'
-                    ? <Droplet color="white" size="15" /> : <Sun color="white" size="15" />}
-                </td>
-                <td>{blend.taste}</td>
-                <td>
-                  <button type="button" className="custom_btn">
-                    <Eye color="white" size="15" />
-                  </button>
-                  <button type="button" className="custom_btn">
-                    <Edit2 color="white" size="15" />
-                  </button>
-                </td>
-              </tr>
+              <>
+                <tr key={`blend_${blend.id}`}>
+                  <th scope="row">{blend.id}</th>
+                  <td>{blend.country}</td>
+                  <td>{blend.name}</td>
+                  <td>
+                    {blend.processing === 'мытая'
+                      ? <Droplet color="black" size="20" />
+                      : <Sun color="black" size="20" />}
+                  </td>
+                  <td>{blend.taste}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="custom_btn"
+                      onClick={() => viewClick(blend.id)}
+                    >
+                      <Eye color="white" size="15" />
+                    </button>
+                    <button type="button" className="custom_btn">
+                      <Edit2 color="white" size="15" />
+                    </button>
+                  </td>
+                </tr>
+                <tr key={`collapseBlend_${blend.id}`} className="collapse" id={`collapseBlend_${blend.id}`}>
+                  <td colSpan={6}>
+                    { blendData && <BlendDetails blendData={blendData} />}
+                  </td>
+                </tr>
+              </>
             ))}
             {!blendsData && <tr><td colSpan={6} className="text-center">No data found</td></tr>}
           </tbody>
