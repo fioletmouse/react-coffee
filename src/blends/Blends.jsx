@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import {
+  Droplet, Edit2, Eye, Plus, Sun
+} from 'react-feather';
 import BlendsActions from '../services/blends-handler';
 import BlockContainer from '../shared/blockContainer/BlockContainer';
 import PageContainer from '../shared/pageContainer/PageContainer';
@@ -30,7 +33,11 @@ function Blends() {
               <th scope="col">Name</th>
               <th scope="col">Processing</th>
               <th scope="col">Taste</th>
-              <th scope="col"> </th>
+              <th scope="col">
+                <button type="button" className="custom_btn">
+                  <Plus color="white" size="15" />
+                </button>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -39,9 +46,19 @@ function Blends() {
                 <th scope="row">{blend.id}</th>
                 <td>{blend.country}</td>
                 <td>{blend.name}</td>
-                <td>{blend.processing}</td>
+                <td>
+                  {blend.processing === 'мытая'
+                    ? <Droplet color="white" size="15" /> : <Sun color="white" size="15" />}
+                </td>
                 <td>{blend.taste}</td>
-                <td>-</td>
+                <td>
+                  <button type="button" className="custom_btn">
+                    <Eye color="white" size="15" />
+                  </button>
+                  <button type="button" className="custom_btn">
+                    <Edit2 color="white" size="15" />
+                  </button>
+                </td>
               </tr>
             ))}
             {!blendsData && <tr><td colSpan={6} className="text-center">No data found</td></tr>}
