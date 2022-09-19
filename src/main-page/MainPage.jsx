@@ -8,14 +8,12 @@ function MainPage({ pages }) {
   // document.documentElement.style.setProperty('--hover-color', 'green');
   return (
     <div className="row">
+      <div className="w-100 p-3" />
       {
-        pages.map((page, index) => (
-          <>
-            { (index % 2) === 0 && <div className="w-100 p-3" /> }
-            <div className={(index % 2) === 0 ? 'offset-1 col-5 text-right' : 'col-5 text-left'}>
-              <MainBlock page={page} />
-            </div>
-          </>
+        pages.map((page) => (
+          <div className="col-4">
+            <MainBlock page={page} />
+          </div>
         ))
       }
     </div>
