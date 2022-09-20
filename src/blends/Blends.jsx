@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import {
   Droplet, Edit2, Eye, Plus, Sun
 } from 'react-feather';
@@ -56,8 +56,8 @@ function Blends() {
           </thead>
           <tbody>
             {blendsData && blendsData.map((blend) => (
-              <>
-                <tr key={`blend_${blend.id}`}>
+              <Fragment key={`blend_${blend.id}`}>
+                <tr>
                   <th scope="row">{blend.id}</th>
                   <td>{blend.country}</td>
                   <td>{blend.name}</td>
@@ -66,7 +66,10 @@ function Blends() {
                       ? <Droplet color="black" size="20" />
                       : <Sun color="black" size="20" />}
                   </td>
-                  <td>{blend.taste}</td>
+                  <td>
+                    { blend.taste && `Кислотность: ${blend.taste.acid}% Сладость: ${blend.taste.sweet}%
+                  Интенсивность: ${blend.taste.intensity}%`}
+                  </td>
                   <td>
                     <button
                       type="button"
@@ -80,12 +83,12 @@ function Blends() {
                     </button>
                   </td>
                 </tr>
-                <tr key={`collapseBlend_${blend.id}`} className="collapse" id={`collapseBlend_${blend.id}`}>
+                <tr className="collapse" id={`collapseBlend_${blend.id}`}>
                   <td colSpan={6}>
                     { blendData && <BlendDetails blendData={blendData} />}
                   </td>
                 </tr>
-              </>
+              </Fragment>
             ))}
             {!blendsData && <tr><td colSpan={6} className="text-center">No data found</td></tr>}
           </tbody>
