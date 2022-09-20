@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import blendProps from './blendProps';
 
-function BlendDetails({ blendData }) {
+function BlendDetailsView({ blendData }) {
   return (
     <div className="card card-body">
       <div className="row">
@@ -73,7 +73,7 @@ function BlendDetails({ blendData }) {
   );
 }
 
-BlendDetails.propTypes = {
+BlendDetailsView.propTypes = {
   blendData: PropTypes.objectOf(blendProps).isRequired,
 };
-export default BlendDetails;
+export default BlendDetailsView;

@@ -7,7 +7,7 @@ import BlendsActions from '../services/blends-handler';
 import BlockContainer from '../shared/blockContainer/BlockContainer';
 import PageContainer from '../shared/pageContainer/PageContainer';
 import './Blends.css';
-import BlendDetails from './details/BlendDetails';
+import BlendDetailsView from './details/BlendDetailsView';
 
 function Blends() {
   const [blendsData, setBlendsData] = useState(null);
@@ -85,7 +85,7 @@ function Blends() {
                 </tr>
                 <tr className="collapse" id={`collapseBlend_${blend.id}`}>
                   <td colSpan={6}>
-                    { blendData && <BlendDetails blendData={blendData} />}
+                    { blendData && <BlendDetailsView blendData={blendData} />}
                   </td>
                 </tr>
               </Fragment>
