@@ -74,6 +74,6 @@ function BlendDetailsView({ blendData }) {
 }
 
 BlendDetailsView.propTypes = {
-  blendData: PropTypes.objectOf(blendProps).isRequired,
+  blendData: PropTypes.objectOf(blendProps.blendProps).isRequired,
 };
 export default BlendDetailsView;

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useEffect, useState } from 'react';
 import {
@@ -7,6 +8,7 @@ import BlendsActions from '../services/blends-handler';
 import BlockContainer from '../shared/blockContainer/BlockContainer';
 import PageContainer from '../shared/pageContainer/PageContainer';
 import './Blends.css';
+import BlendDetailsEdit from './details/BlendDetailsEdit';
 import BlendDetailsView from './details/BlendDetailsView';
 
 function Blends() {
@@ -27,14 +29,21 @@ function Blends() {
   }, []);
 
   const viewClick = (id) => {
-    // eslint-disable-next-line no-undef
     $('.collapse').collapse('hide');
     BlendsActions.getBlendInfo(id)
       .then((data) => {
         setBlendData(data);
-        // eslint-disable-next-line no-undef
         $(`#collapseBlend_${id}`).collapse('toggle');
       });
+  };
+  const addClick = () => {
+    // $('.collapse').collapse('hide');
+    setBlendData(null);
+    $('#collapseBlendNew').collapse('toggle');
+  };
+
+  const addRecord = (d) => {
+    console.log(d);
   };
   return (
     <PageContainer>
@@ -48,13 +57,19 @@ function Blends() {
               <th scope="col">Method</th>
               <th scope="col">Taste</th>
               <th scope="col">
-                <button type="button" className="custom_btn">
+                <button type="button" className="custom_btn" onClick={() => addClick()}>
                   <Plus color="white" size="15" />
                 </button>
               </th>
             </tr>
           </thead>
           <tbody>
+            {/* add new record panel */}
+            <tr className="collapse" id="collapseBlendNew">
+              <td colSpan={6}>
+                <BlendDetailsEdit onHandle={addRecord} />
+              </td>
+            </tr>
             {blendsData && blendsData.map((blend) => (
               <Fragment key={`blend_${blend.id}`}>
                 <tr>
