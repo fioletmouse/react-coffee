@@ -1,3 +1,6 @@
-label {
-    display: inline-flex;
+p > label {
+    margin-right: 10px
+}
+.required_red {
+    color: red;
 }

@@ -6,17 +6,25 @@ import {
 } from 'react-feather';
 import BlendsActions from '../services/blends-handler';
 import BlockContainer from '../shared/blockContainer/BlockContainer';
+import Modal from '../shared/modal/Modal';
 import PageContainer from '../shared/pageContainer/PageContainer';
 import './Blends.css';
 import BlendDetailsEdit from './details/BlendDetailsEdit';
 import BlendDetailsView from './details/BlendDetailsView';
 
 function Blends() {
+  const modes = {
+    view: 1,
+    edit: 2,
+    add: 3
+  };
   const [blendsData, setBlendsData] = useState(null);
   const [blendsLoader, setBlendsLoader] = useState(true);
   const [blendsError, setBlendsError] = useState(null);
 
   const [blendData, setBlendData] = useState(null);
+  const [mode, setMode] = useState(modes.view);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setBlendsError(null);
@@ -28,23 +36,56 @@ function Blends() {
       }).catch((err) => { setBlendsError(err); setBlendsLoader(false); });
   }, []);
 
-  const viewClick = (id) => {
-    $('.collapse').collapse('hide');
+  const viewEditClick = (id, modeValue) => {
+    setMode(modeValue);
     BlendsActions.getBlendInfo(id)
       .then((data) => {
         setBlendData(data);
-        $(`#collapseBlend_${id}`).collapse('toggle');
+        setShowModal(true);
       });
   };
+
   const addClick = () => {
-    // $('.collapse').collapse('hide');
     setBlendData(null);
-    $('#collapseBlendNew').collapse('toggle');
+    setMode(modes.add);
+    setShowModal(true);
   };
 
-  const addRecord = (d) => {
-    console.log(d);
+  const addRecord = (data) => {
+    BlendsActions.addBlend(data)
+      .then((newRecord) => {
+        setBlendsData([...blendsData, newRecord]);
+        setShowModal(false);
+      });
   };
+
+  const editRecord = (data) => {
+    BlendsActions.editBlend(data)
+      .then((updatedRecord) => {
+        setBlendsData((prev) => {
+          const indexOfEl = prev.findIndex((prevRecord) => prevRecord.id === updatedRecord.id);
+          prev.splice(indexOfEl, 1, updatedRecord);
+          return [...prev];
+        });
+        setShowModal(false);
+      });
+  };
+
+  const renderSwitch = (modeValue) => {
+    switch (modeValue) {
+      case modes.add:
+        return <BlendDetailsEdit blendData={blendData} onHandle={addRecord} />;
+      case modes.edit:
+        return <BlendDetailsEdit blendData={blendData} onHandle={editRecord} />;
+      default:
+        return <BlendDetailsView blendData={blendData} />;
+    }
+  };
+
+  const modalClose = () => {
+    setShowModal(false);
+  };
+
   return (
     <PageContainer>
       <BlockContainer loader={blendsLoader} error={blendsError}>
@@ -64,12 +105,6 @@ function Blends() {
             </tr>
           </thead>
           <tbody>
-            {/* add new record panel */}
-            <tr className="collapse" id="collapseBlendNew">
-              <td colSpan={6}>
-                <BlendDetailsEdit onHandle={addRecord} />
-              </td>
-            </tr>
             {blendsData && blendsData.map((blend) => (
               <Fragment key={`blend_${blend.id}`}>
                 <tr>
@@ -82,25 +117,24 @@ function Blends() {
                       : <Sun color="black" size="20" />}
                   </td>
                   <td>
-                    { blend.taste && `Кислотность: ${blend.taste.acid}% Сладость: ${blend.taste.sweet}%
-                  Интенсивность: ${blend.taste.intensity}%`}
+                    { blend.taste && `Acid: ${blend.taste.acid || '-'}% Sweet: ${blend.taste.sweet || '-'}%
+                    Intensity: ${blend.taste.intensity || '-'}%`}
                   </td>
                   <td>
                     <button
                       type="button"
                       className="custom_btn"
-                      onClick={() => viewClick(blend.id)}
+                      onClick={() => viewEditClick(blend.id, modes.view)}
                     >
                       <Eye color="white" size="15" />
                     </button>
-                    <button type="button" className="custom_btn">
+                    <button
+                      type="button"
+                      className="custom_btn"
+                      onClick={() => viewEditClick(blend.id, modes.edit)}
+                    >
                       <Edit2 color="white" size="15" />
                     </button>
-                  </td>
-                </tr>
-                <tr className="collapse" id={`collapseBlend_${blend.id}`}>
-                  <td colSpan={6}>
-                    { blendData && <BlendDetailsView blendData={blendData} />}
                   </td>
                 </tr>
               </Fragment>
@@ -109,6 +143,7 @@ function Blends() {
           </tbody>
         </table>
       </BlockContainer>
+      {showModal && (<Modal onClose={modalClose}>{renderSwitch(mode)}</Modal>)}
     </PageContainer>
   );
 }
