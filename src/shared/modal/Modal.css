@@ -1,0 +1,10 @@
+.force_show {
+    display: block;
+    padding-right: 21px;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-tap-highlight-color: transparent;
+}
+.modal-header {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
