@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
+import ProcessingTypes from '../../services/processing-types';
 
 const blendProps = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   country: PropTypes.string.isRequired,
-  processing: PropTypes.oneOf(['мытая', 'сухая']),
+  processing: PropTypes.oneOf([ProcessingTypes.wash, ProcessingTypes.dry]),
   brew: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   region: PropTypes.string.isRequired,

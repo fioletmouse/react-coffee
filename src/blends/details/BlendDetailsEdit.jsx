@@ -7,6 +7,7 @@ import {
   Droplet, Save, Sun
 } from 'react-feather';
 import { useForm } from 'react-hook-form';
+import ProcessingTypes from '../../services/processing-types';
 import RequiredInput from '../../shared/requiredInput/RequiredInput';
 import blendProps from './blendProps';
 
@@ -65,14 +66,24 @@ function BlendDetailsEdit({ blendData, onHandle }) {
             </p>
             <p>
               <label htmlFor="processing"><b>Processing</b></label>
-              <label htmlFor="мытая" style={{ marginLeft: '20px' }}>
+              <label htmlFor={ProcessingTypes.wash} style={{ marginLeft: '20px' }}>
                 <Droplet color="black" size="20" />
               </label>
-              <input type="radio" {...register('processing')} value="мытая" id="мытая" />
-              <label htmlFor="сухая" style={{ marginLeft: '20px' }}>
+              <input
+                type="radio"
+                {...register('processing')}
+                value={ProcessingTypes.wash}
+                id={ProcessingTypes.wash}
+              />
+              <label htmlFor={ProcessingTypes.dry} style={{ marginLeft: '20px' }}>
                 <Sun color="black" size="20" />
               </label>
-              <input type="radio" {...register('processing')} value="сухая" id="сухая" />
+              <input
+                type="radio"
+                {...register('processing')}
+                value={ProcessingTypes.dry}
+                id={ProcessingTypes.dry}
+              />
             </p>
             <p>
               <label htmlFor="drying"><b>Drying</b></label>

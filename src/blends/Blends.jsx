@@ -5,6 +5,7 @@ import {
   Droplet, Edit2, Eye, Plus, Sun, Trash
 } from 'react-feather';
 import BlendsActions from '../services/blends-handler';
+import ProcessingTypes from '../services/processing-types';
 import BlockContainer from '../shared/blockContainer/BlockContainer';
 import Modal from '../shared/modal/Modal';
 import PageContainer from '../shared/pageContainer/PageContainer';
@@ -91,9 +92,9 @@ function Blends() {
 
   const renderProcessing = (processingValue) => {
     switch (processingValue) {
-      case 'мытая':
+      case ProcessingTypes.wash:
         return <Droplet color="black" size="20" />;
-      case 'сухая':
+      case ProcessingTypes.dry:
         return <Sun color="black" size="20" />;
       default:
         return '';
