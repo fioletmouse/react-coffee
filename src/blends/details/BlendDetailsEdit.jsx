@@ -3,7 +3,9 @@
 /* eslint-disable no-unused-vars */
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Save } from 'react-feather';
+import {
+  Droplet, Save, Sun
+} from 'react-feather';
 import { useForm } from 'react-hook-form';
 import RequiredInput from '../../shared/requiredInput/RequiredInput';
 import blendProps from './blendProps';
@@ -17,7 +19,7 @@ function BlendDetailsEdit({ blendData, onHandle }) {
     <div className="card card-body">
       <form onSubmit={handleSubmit(onSubmit)} style={{ width: '100%' }}>
         <div className="row">
-          <div className="col-4 text-right">
+          <div className="col-lg-4 text-right">
             <RequiredInput register={register} errors={errors} propName="name" uiPropName="Name" />
             <RequiredInput register={register} errors={errors} propName="country" uiPropName="Country" />
             <RequiredInput register={register} errors={errors} propName="region" uiPropName="Region" />
@@ -27,7 +29,7 @@ function BlendDetailsEdit({ blendData, onHandle }) {
             </p>
             <RequiredInput register={register} errors={errors} propName="type" uiPropName="Type" />
           </div>
-          <div className="col-4 text-right">
+          <div className="col-lg-4 text-right">
             <p>
               <span><b>Taste</b></span>
               <br />
@@ -35,43 +37,74 @@ function BlendDetailsEdit({ blendData, onHandle }) {
               <input
                 type="number"
                 {...register('taste.acid', {
-                  min: 0,
-                  max: {
-                    value: 100,
-                    message: 'more than 100'
-                  }
+                  min: { value: 1, message: 'Value should be more then 0' },
+                  max: { value: 100, message: 'Value should be equal or less than 100' }
                 })}
               />
-              {/* {errors.taste && (<p className="required_red">{errors.taste?.acid}</p>)} */}
+              {errors.taste?.acid && (<p className="required_red">{errors.taste?.acid.message}</p>)}
               <br />
               <label htmlFor="taste.sweet"><b>Sweet</b></label>
-              <input type="number" {...register('taste.sweet', { min: 0, max: 100 })} />
+              <input
+                type="number"
+                {...register('taste.sweet', {
+                  min: { value: 1, message: 'Value should be more then 0' },
+                  max: { value: 100, message: 'Value should be equal or less than 100' }
+                })}
+              />
+              {errors.taste?.sweet && (<p className="required_red">{errors.taste?.sweet.message}</p>)}
               <br />
               <label htmlFor="taste.intensity"><b>Intensity</b></label>
-              <input type="number" {...register('taste.intensity', { min: 0, max: 100 })} />
+              <input
+                type="number"
+                {...register('taste.intensity', {
+                  min: { value: 1, message: 'Value should be more then 0' },
+                  max: { value: 100, message: 'Value should be equal or less than 100' }
+                })}
+              />
+              {errors.taste?.intensity && (<p className="required_red">{errors.taste?.intensity.message}</p>)}
             </p>
             <p>
               <label htmlFor="processing"><b>Processing</b></label>
-              <input {...register('processing')} />
+              <label htmlFor="мытая" style={{ marginLeft: '20px' }}>
+                <Droplet color="black" size="20" />
+              </label>
+              <input type="radio" {...register('processing')} value="мытая" id="мытая" />
+              <label htmlFor="сухая" style={{ marginLeft: '20px' }}>
+                <Sun color="black" size="20" />
+              </label>
+              <input type="radio" {...register('processing')} value="сухая" id="сухая" />
             </p>
             <p>
               <label htmlFor="drying"><b>Drying</b></label>
               <input {...register('drying')} />
             </p>
           </div>
-          <div className="col-4 text-right">
-            <p>
-              <label htmlFor="brew"><b>Brew</b></label>
-              <input {...register('brew', { required: true })} />
-              {errors.brew && <p>Brew type is required</p>}
-            </p>
+          <div className="col-lg-4 text-right">
+            <RequiredInput register={register} errors={errors} propName="brew" uiPropName="Brew" />
             <p>
               <label htmlFor="minAltitude"><b>Min Altitude</b></label>
-              <input {...register('minAltitude')} />
+              <input
+                type="number"
+                {...register(
+                  'minAltitude',
+                  {
+                    min: { value: 0, message: 'Altitude is less than 0' },
+                    max: { value: 5000, message: 'Altitude is greater than 5000' }
+                  }
+                )}
+              />
+              {errors.minAltitude && (<p className="required_red">{errors.minAltitude?.message}</p>)}
             </p>
             <p>
               <label htmlFor="maxAltitude"><b>Max Altitude</b></label>
-              <input {...register('maxAltitude')} />
+              <input
+                type="number"
+                {...register('maxAltitude', {
+                  min: { value: 0, message: 'Altitude is less than 0' },
+                  max: { value: 5000, message: 'Altitude is greater than 5000' }
+                })}
+              />
+              {errors.maxAltitude && (<p className="required_red">{errors.maxAltitude?.message}</p>)}
             </p>
             <p>
               <label htmlFor="harvestDate"><b>Harvest Date</b></label>
@@ -84,13 +117,15 @@ function BlendDetailsEdit({ blendData, onHandle }) {
           </div>
         </div>
         <div className="row">
-          <div className="col-10">
+          <div className="col-12">
             <p>
               <label htmlFor="description"><b>Description</b></label>
-              <input {...register('description')} />
+              <textarea rows="2" style={{ width: '100%' }} {...register('description')} />
             </p>
           </div>
-          <div className="col-2">
+        </div>
+        <div className="row">
+          <div className=" offset-11 col-1 text-right">
             <button
               className="custom_btn"
               type="submit"
@@ -105,7 +140,7 @@ function BlendDetailsEdit({ blendData, onHandle }) {
   );
 }
 BlendDetailsEdit.propTypes = {
-  blendData: PropTypes.objectOf(blendProps.blendProps),
+  blendData: PropTypes.shape(blendProps.blendProps),
   onHandle: PropTypes.func.isRequired
 };
 BlendDetailsEdit.defaultProps = {

@@ -4,3 +4,6 @@ p > label {
 .required_red {
     color: red;
 }
+form  input[type=text] {
+    width: 65%;
+}

@@ -6,7 +6,7 @@ function BlendDetailsView({ blendData }) {
   return (
     <div className="card card-body">
       <div className="row">
-        <div className="col-3">
+        <div className="col-4">
           <p>
             <span><b>Name </b></span>
             <span>{blendData.name}</span>
@@ -61,7 +61,7 @@ function BlendDetailsView({ blendData }) {
             <span>{blendData.roastDate || '-'}</span>
           </p>
         </div>
-        <div className="col-4">
+        <div className="col-3">
           <p>
             <span><b>Description</b></span>
           </p>
@@ -74,6 +74,6 @@ function BlendDetailsView({ blendData }) {
 }
 
 BlendDetailsView.propTypes = {
-  blendData: PropTypes.objectOf(blendProps.blendProps).isRequired,
+  blendData: PropTypes.shape(blendProps.blendProps).isRequired,
 };
 export default BlendDetailsView;

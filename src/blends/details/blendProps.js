@@ -12,7 +12,7 @@ const blendProps = {
   minAltitude: PropTypes.number,
   maxAltitude: PropTypes.number,
   description: PropTypes.string,
-  taste: PropTypes.objectOf({
+  taste: PropTypes.shape({
     acid: PropTypes.number.isRequired,
     sweet: PropTypes.number.isRequired,
     intensity: PropTypes.number.isRequired,

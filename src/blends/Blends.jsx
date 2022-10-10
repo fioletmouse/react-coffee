@@ -82,6 +82,17 @@ function Blends() {
     }
   };
 
+  const renderProcessing = (processingValue) => {
+    switch (processingValue) {
+      case 'мытая':
+        return <Droplet color="black" size="20" />;
+      case 'сухая':
+        return <Sun color="black" size="20" />;
+      default:
+        return '';
+    }
+  };
+
   const modalClose = () => {
     setShowModal(false);
   };
@@ -112,13 +123,11 @@ function Blends() {
                   <td>{blend.country}</td>
                   <td>{blend.name}</td>
                   <td>
-                    {blend.processing === 'мытая'
-                      ? <Droplet color="black" size="20" />
-                      : <Sun color="black" size="20" />}
+                    {renderProcessing(blend.processing)}
                   </td>
                   <td>
-                    { blend.taste && `Acid: ${blend.taste.acid || '-'}% Sweet: ${blend.taste.sweet || '-'}%
-                    Intensity: ${blend.taste.intensity || '-'}%`}
+                    {`Acid: ${blend.taste?.acid || '-'}% Sweet: ${blend.taste?.sweet || '-'}%
+                    Intensity: ${blend.taste?.intensity || '-'}%`}
                   </td>
                   <td>
                     <button
