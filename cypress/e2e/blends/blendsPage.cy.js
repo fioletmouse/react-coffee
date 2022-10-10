@@ -4,6 +4,14 @@ describe('blends page spec', () => {
         cy.visit('/blends');
     })
 
+    function addRequiredValues() {
+        cy.get('input[name="name"]').type('test-name');
+        cy.get('input[name="country"]').type('test-country');
+        cy.get('input[name="region"]').type('test-region');
+        cy.get('input[name="type"]').type('test-type');
+        cy.get('input[name="brew"]').type('test-brew');
+    }
+
     it('should show 2 dicts', () => {
         cy.get('table');
         cy.get('table > thead');
@@ -13,14 +21,6 @@ describe('blends page spec', () => {
         beforeEach(() => {
             cy.get('[data-test="add_btn"]').as("add_btn");
         })
-
-        function addRequiredValues() {
-           cy.get('input[name="name"]').type('test-name');
-           cy.get('input[name="country"]').type('test-country');
-           cy.get('input[name="region"]').type('test-region');
-           cy.get('input[name="type"]').type('test-type');
-           cy.get('input[name="brew"]').type('test-brew');
-        }
 
         it('should open/close a modal', () => {
             cy.get('@add_btn').click();
@@ -131,65 +131,74 @@ describe('blends page spec', () => {
         })
     });
 
-    describe.skip('blends edit and delete value spec', () => {
+    describe('blends - action buttons spec', () => {
         beforeEach(() => {
             // add value
-            cy.get('[data-test="header_Brewing"] button').as("action_btn");
-            cy.get('@action_btn').click();
-            cy.get('input').type("brewing_type");
+            cy.get('[data-test="add_btn"]').click();
+            addRequiredValues();
             cy.get('[data-test="button_submit"]').click();
-            // create var
-            cy.get('[data-test="header_Brewing"]').parent().next("div").as("record_row")
-            cy.get("@record_row").within(() => {
-                cy.get('[data-test="edit_btn"]').as('edit_btn')
-            })
+            cy.get("tbody > tr").last().as("new_rec");
+        })
+
+        it('should show modal view', () => {
+            cy.get("@new_rec").within(() => {
+                cy.get('[data-test="button_view"]').click()
+            });
+            cy.get('div.modal').should('have.class', 'show');
+            cy.get('div.modal').contains('test-name')
+            cy.get('div.modal').contains('test-country')
+            cy.get('div.modal').contains('test-region')
+            cy.get('div.modal').contains('test-type')
+            cy.get('div.modal').contains('test-brew')
+            cy.get('div.modal').contains('Taste')
+
+            cy.get('div.modal-header > button.close').click();
+            cy.get('div.modal').should('not.exist');
         })
 
         it('should edit an existing value', () => {
-            cy.get('@edit_btn').click();
-            cy.get('input').should('have.value', "brewing_type");
-            cy.get('input').clear().type("new_type");
+            cy.get("@new_rec").within(() => {
+                cy.get('[data-test="button_edit"]').click()
+            });
+            cy.get('div.modal').should('have.class', 'show');
+
+            // update value and add new
+            cy.get('input[name="name"]').clear().type('test-new');
+            cy.get('input[name="taste.acid"]').type(50);
+            cy.get('input[name="taste.sweet"]').type(60);
+            cy.get('input[name="taste.intensity"]').type(70);
+
             cy.get('[data-test="button_submit"]').click();
 
             // value is changed
-            cy.contains("new_type");
-            cy.contains("brewing_type").should('not.exist');
-
-            // no edit fields
-            cy.get('input').should('not.exist');
-            cy.get('[data-test="button_submit"]').should('not.exist');
+            cy.get("@new_rec").within(() => {
+                cy.get('td').should('contain.text', 'test-country').next()
+                .should('contain.text', 'test-new').next()
+                .should('contain.text', '').next()
+                .should('contain.text', 'Acid: 50% Sweet: 60%\n Intensity: 70%')
+            });
         })
 
         it('should cancel the editing of existing value', () => {
-            cy.get('@edit_btn').click();
-            cy.get('input').should('have.value', "brewing_type");
-            cy.get('input').clear().type("new_type");
-            cy.get('@edit_btn').click(); // cancel
+            cy.get("@new_rec").within(() => {
+                cy.get('[data-test="button_edit"]').click()
+            });
+            cy.get('div.modal').should('have.class', 'show');
 
-            // value is changes
-            cy.contains("new_type").should('not.exist');
-            cy.contains("brewing_type");
-            // no edit fields
-            cy.get('input').should('not.exist');
-            cy.get('[data-test="button_submit"]').should('not.exist');
+            // update value and add new
+            cy.get('input[name="name"]').clear().type('test-new');
 
-        })
+            cy.get('div.modal-header > button.close').click();
 
-        it('should not update existing value to empty', () => {
-            cy.get('@edit_btn').click();
-            cy.get('input').should('have.value', "brewing_type");
-            cy.get('input').clear().type("   ");
-            cy.get('[data-test="button_submit"]').click();
-
-            // value is not changed
-            cy.contains("brewing_type");
+            cy.get('tbody').contains('test-name')
+            cy.get('tbody').should('not.contain.text','test-new')
         })
 
         it('should delete value', () => {
-            cy.get("@record_row").within(() => {
-                cy.get('[data-test="button_delete_Brewing"]').click()
+            cy.get("@new_rec").within(() => {
+                cy.get('[data-test="button_delete"]').click()
             });
-            cy.contains("No data found")
+            cy.get("tbody").should('not.contain.text', 'test-name')
         })
     });
 });
