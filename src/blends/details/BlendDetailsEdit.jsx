@@ -37,8 +37,8 @@ function BlendDetailsEdit({ blendData, onHandle }) {
               <input
                 type="number"
                 {...register('taste.acid', {
-                  min: { value: 1, message: 'Value should be more then 0' },
-                  max: { value: 100, message: 'Value should be equal or less than 100' }
+                  min: { value: 1, message: 'Acid value should be more then 0' },
+                  max: { value: 100, message: 'Acid value should be equal or less than 100' }
                 })}
               />
               {errors.taste?.acid && (<p className="required_red">{errors.taste?.acid.message}</p>)}
@@ -47,8 +47,8 @@ function BlendDetailsEdit({ blendData, onHandle }) {
               <input
                 type="number"
                 {...register('taste.sweet', {
-                  min: { value: 1, message: 'Value should be more then 0' },
-                  max: { value: 100, message: 'Value should be equal or less than 100' }
+                  min: { value: 1, message: 'Sweet value should be more then 0' },
+                  max: { value: 100, message: 'Sweet value should be equal or less than 100' }
                 })}
               />
               {errors.taste?.sweet && (<p className="required_red">{errors.taste?.sweet.message}</p>)}
@@ -57,8 +57,8 @@ function BlendDetailsEdit({ blendData, onHandle }) {
               <input
                 type="number"
                 {...register('taste.intensity', {
-                  min: { value: 1, message: 'Value should be more then 0' },
-                  max: { value: 100, message: 'Value should be equal or less than 100' }
+                  min: { value: 1, message: 'Intensity value should be more then 0' },
+                  max: { value: 100, message: 'Intensity value should be equal or less than 100' }
                 })}
               />
               {errors.taste?.intensity && (<p className="required_red">{errors.taste?.intensity.message}</p>)}
@@ -88,8 +88,8 @@ function BlendDetailsEdit({ blendData, onHandle }) {
                 {...register(
                   'minAltitude',
                   {
-                    min: { value: 0, message: 'Altitude is less than 0' },
-                    max: { value: 5000, message: 'Altitude is greater than 5000' }
+                    min: { value: 0, message: 'Min altitude is less than 0' },
+                    max: { value: 5000, message: 'Min altitude is greater than 5000' }
                   }
                 )}
               />
@@ -100,8 +100,8 @@ function BlendDetailsEdit({ blendData, onHandle }) {
               <input
                 type="number"
                 {...register('maxAltitude', {
-                  min: { value: 0, message: 'Altitude is less than 0' },
-                  max: { value: 5000, message: 'Altitude is greater than 5000' }
+                  min: { value: 0, message: 'Max altitude is less than 0' },
+                  max: { value: 5000, message: 'Max altitude is greater than 5000' }
                 })}
               />
               {errors.maxAltitude && (<p className="required_red">{errors.maxAltitude?.message}</p>)}

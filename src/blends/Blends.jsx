@@ -109,7 +109,7 @@ function Blends() {
               <th scope="col">Method</th>
               <th scope="col">Taste</th>
               <th scope="col">
-                <button type="button" className="custom_btn" onClick={() => addClick()}>
+                <button type="button" className="custom_btn" data-test="add_btn" onClick={() => addClick()}>
                   <Plus color="white" size="15" />
                 </button>
               </th>
@@ -127,7 +127,7 @@ function Blends() {
                   </td>
                   <td>
                     {`Acid: ${blend.taste?.acid || '-'}% Sweet: ${blend.taste?.sweet || '-'}%
-                    Intensity: ${blend.taste?.intensity || '-'}%`}
+ Intensity: ${blend.taste?.intensity || '-'}%`}
                   </td>
                   <td>
                     <button

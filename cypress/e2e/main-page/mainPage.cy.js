@@ -4,15 +4,14 @@ describe('main page spec', () => {
     cy.visit('/')
   })
 
-  it('have 4 links',  () => {
-    cy.get("a").should('have.length', 4)
-    cy.get("a[href='/tools']").should("have.text", "tools")
+  it('have 3 links',  () => {
+    cy.get("a").should('have.length', 3)
     cy.get("a[href='/blends']").should("have.text", "blends")
     cy.get("a[href='/recipes']").should("have.text", "recipes")
     cy.get("a[href='/dict']").should("have.text", "dicts")
   })
 
-  it('open tools page',  () => {
+  it.skip('open tools page',  () => {
     cy.contains("tools").click()
     cy.url().should('include', '/tools')
   })
