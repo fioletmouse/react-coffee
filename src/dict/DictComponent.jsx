@@ -50,7 +50,12 @@ function DictComponent({ dictParams, appliedClass }) {
   };
 
   return (
-    <BlockContainer loader={dictLoader} error={dictError} inheritedClass={`col-6 ${appliedClass}`}>
+    <BlockContainer
+      loader={dictLoader}
+      error={dictError}
+      inheritedClass={`col-6 ${appliedClass}`}
+      softError="true"
+    >
       <div className="row">
         <div className="col-12" data-test={`header_${dictParams.name}`}>
           <h4>{dictParams.name}</h4>
