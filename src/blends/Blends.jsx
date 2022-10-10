@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { Fragment, useEffect, useState } from 'react';
 import {
-  Droplet, Edit2, Eye, Plus, Sun
+  Droplet, Edit2, Eye, Plus, Sun, Trash
 } from 'react-feather';
 import BlendsActions from '../services/blends-handler';
 import BlockContainer from '../shared/blockContainer/BlockContainer';
@@ -71,6 +71,13 @@ function Blends() {
       });
   };
 
+  const deleteBlend = (id) => {
+    BlendsActions.deleteBlend(id)
+      .then((blends) => {
+        setBlendsData([...blends]);
+      });
+  };
+
   const renderSwitch = (modeValue) => {
     switch (modeValue) {
       case modes.add:
@@ -133,6 +140,7 @@ function Blends() {
                     <button
                       type="button"
                       className="custom_btn"
+                      data-test="button_view"
                       onClick={() => viewEditClick(blend.id, modes.view)}
                     >
                       <Eye color="white" size="15" />
@@ -140,9 +148,18 @@ function Blends() {
                     <button
                       type="button"
                       className="custom_btn"
+                      data-test="button_edit"
                       onClick={() => viewEditClick(blend.id, modes.edit)}
                     >
                       <Edit2 color="white" size="15" />
+                    </button>
+                    <button
+                      type="button"
+                      data-test="button_delete"
+                      onClick={() => deleteBlend(blend.id)}
+                      className="custom_btn"
+                    >
+                      <Trash color="white" size="15" />
                     </button>
                   </td>
                 </tr>

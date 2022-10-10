@@ -37,11 +37,19 @@ function BlendsActions() {
       taste: data.taste
     };
   };
+
+  const deleteBlend = async (id) => {
+    const indx = blends.findIndex((item) => item.id === id);
+    blends.splice(indx, 1);
+    return blends;
+  };
+
   return {
     getBlendsTableData,
     getBlendInfo,
     addBlend,
-    editBlend
+    editBlend,
+    deleteBlend
   };
 }
 export default BlendsActions();

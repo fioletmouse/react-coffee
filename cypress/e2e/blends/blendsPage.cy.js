@@ -131,7 +131,7 @@ describe('blends page spec', () => {
         })
     });
 
-    describe.skip('dictionary edit and delete value spec', () => {
+    describe.skip('blends edit and delete value spec', () => {
         beforeEach(() => {
             // add value
             cy.get('[data-test="header_Brewing"] button').as("action_btn");
