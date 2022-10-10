@@ -8,10 +8,12 @@ import {
 } from 'react-feather';
 import { useForm } from 'react-hook-form';
 import ProcessingTypes from '../../services/processing-types';
+import errorMsgProps from '../../shared/error/ErrorMasProps';
+import ErrorMsg from '../../shared/error/ErrorMsg';
 import RequiredInput from '../../shared/requiredInput/RequiredInput';
 import blendProps from './blendProps';
 
-function BlendDetailsEdit({ blendData, onHandle }) {
+function BlendDetailsEdit({ blendData, onHandle, errorMsg }) {
   const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: blendData });
 
   const onSubmit = (data) => onHandle(data);
@@ -136,7 +138,10 @@ function BlendDetailsEdit({ blendData, onHandle }) {
           </div>
         </div>
         <div className="row">
-          <div className=" offset-11 col-1 text-right">
+          <div className="col-11 text-right" style={{ color: 'red' }}>
+            <ErrorMsg error={errorMsg} />
+          </div>
+          <div className="col-1 text-right">
             <button
               className="custom_btn"
               type="submit"
@@ -152,9 +157,11 @@ function BlendDetailsEdit({ blendData, onHandle }) {
 }
 BlendDetailsEdit.propTypes = {
   blendData: PropTypes.shape(blendProps.blendProps),
-  onHandle: PropTypes.func.isRequired
+  onHandle: PropTypes.func.isRequired,
+  errorMsg: errorMsgProps
 };
 BlendDetailsEdit.defaultProps = {
-  blendData: blendProps.blendPropsNew
+  blendData: blendProps.blendPropsNew,
+  errorMsg: null
 };
 export default BlendDetailsEdit;

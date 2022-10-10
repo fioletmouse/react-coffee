@@ -3,7 +3,7 @@ import errorMsgProps from './ErrorMasProps';
 
 function ErrorMsg({ error }) {
   return (
-    error && <div>{error.message}</div>
+    error && <div className="text-center" style={{ color: 'red', fontWeight: 'bold' }}>{error.message}</div>
   );
 }
 

@@ -22,6 +22,7 @@ function Blends() {
   const [blendsData, setBlendsData] = useState(null);
   const [blendsLoader, setBlendsLoader] = useState(true);
   const [blendsError, setBlendsError] = useState(null);
+  const [blendError, setBlendError] = useState(null);
 
   const [blendData, setBlendData] = useState(null);
   const [mode, setMode] = useState(modes.view);
@@ -57,7 +58,7 @@ function Blends() {
       .then((newRecord) => {
         setBlendsData([...blendsData, newRecord]);
         setShowModal(false);
-      });
+      }).catch((err) => setBlendError(err));
   };
 
   const editRecord = (data) => {
@@ -69,22 +70,22 @@ function Blends() {
           return [...prev];
         });
         setShowModal(false);
-      });
+      }).catch((err) => setBlendError(err));
   };
 
   const deleteBlend = (id) => {
     BlendsActions.deleteBlend(id)
       .then((blends) => {
         setBlendsData([...blends]);
-      });
+      }).catch((err) => setBlendsError(err));
   };
 
   const renderSwitch = (modeValue) => {
     switch (modeValue) {
       case modes.add:
-        return <BlendDetailsEdit blendData={blendData} onHandle={addRecord} />;
+        return <BlendDetailsEdit blendData={blendData} onHandle={addRecord} errorMsg={blendError} />;
       case modes.edit:
-        return <BlendDetailsEdit blendData={blendData} onHandle={editRecord} />;
+        return <BlendDetailsEdit blendData={blendData} onHandle={editRecord} errorMsg={blendError} />;
       default:
         return <BlendDetailsView blendData={blendData} />;
     }
@@ -107,7 +108,7 @@ function Blends() {
 
   return (
     <PageContainer>
-      <BlockContainer loader={blendsLoader} error={blendsError}>
+      <BlockContainer loader={blendsLoader} error={blendsError} softError="true">
         <table className="table">
           <thead>
             <tr>
