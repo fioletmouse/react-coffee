@@ -16,30 +16,8 @@ function CoffeeActions() {
     return cachedList;
   };
 
-  // TODO improve to part search
-  // const findByName = (name) => {
-  //   const allData = getAll();
-  //   if (!name) {
-  //     return allData;
-  //   }
-  //   const lowerName = name.toLowerCase();
-  //   // eslint-disable-next-line no-shadow
-  //   const item = allData.find((item) => item.name.toLowerCase() === lowerName);
-
-  //   if (item) {
-  //     return [item];
-  //   }
-  //   return [];
-  // };
-
-  // const emptyArticleObject = {
-  //   code: '',
-  //   name: '',
-  //   image: '',
-  //   info: '',
-  // };
-
   const findByCodeError = async () => Promise.reject(new Error('Fail to load'));
+
   const findByCode = async (code) => {
     if (!code) {
       return null;
@@ -53,7 +31,6 @@ function CoffeeActions() {
   return {
     getRecipesList,
     getRecipesListError,
-    // findByName,
     findByCode,
     findByCodeError,
   };
